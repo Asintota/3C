@@ -240,3 +240,9 @@ ul {
 #astronaut2 {
   display: none;
 }
+
+/* Apply grayscale and transparency to the SVG image */
+#mountain {
+  filter: grayscale(100%); /* Convert to grayscale */
+  opacity: 0.25; /* Set the transparency (0.0 to 1.0) */
+}
