@@ -20,7 +20,7 @@
   $.get("../datos.csv", function(data) {
     const filas = data.split('\n');
     filas.forEach((fila) => {
-      const celdas = fila.split(', ');
+      const celdas = fila.split(',');
       val1.push(celdas[1]);
       val2.push(celdas[2]);
       val3.push(celdas[3]);
