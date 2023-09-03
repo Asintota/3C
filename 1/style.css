@@ -231,3 +231,12 @@ ul {
   padding-left: 30px;
   line-height: 1.5;
 }
+
+
+#astronaut1 {
+  display: none;
+}
+
+#astronaut2 {
+  display: none;
+}

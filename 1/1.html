@@ -83,7 +83,31 @@
     
 
   </script>
-  
+
+  <script>
+    // Function to toggle between images
+    function toggleImages() {
+        const astronaut1 = document.getElementById('astronaut1');
+        const astronaut2 = document.getElementById('astronaut2');
+
+        if (val1[1]<=25) {
+            // Display the first image and hide the second
+            image1.style.display = 'block';
+            image2.style.display = 'none';
+        } else {
+            // Display the second image and hide the first
+            image1.style.display = 'none';
+            image2.style.display = 'block';
+        }
+    }
+  </script>
+
+
+
+
+
+
+
 </head>
 <body>
   <div class="container">
@@ -105,7 +129,8 @@
           </div>  
         </div>
         <div class="back">
-          <img src="../roles/astronaut/Astronaut1.svg">
+          <img id="astronaut1" src="../roles/astronaut/Astronaut1.svg">
+          <img id="astronaut2" src="../roles/astronaut/Astronaut2.svg">
           <!-- <ul style="list-style-type: disc;">
             <li>Demostra moito interese pola materia e por aprender</li>
             <li>Sempre presta atención</li>
