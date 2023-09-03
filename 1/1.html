@@ -106,13 +106,17 @@
   const mountain = document.getElementById('mountain');
 
  // Check a condition here
-  const conditionMet = true; // Replace with your condition
+  function toggleBadges() {
+    const conditionMet = true; // Replace with your condition
 
-  if (conditionMet) {
+    if (conditionMet) {
         // If the condition is met, reset opacity and grayscale to normal
         mountain.style.filter = 'none'; // Remove grayscale
         mountain.style.opacity = '1'; // Set full opacity
-  };
+    }
+  }
+
+  window.onload = toggleBadges;
   
   
   
