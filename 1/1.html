@@ -43,7 +43,37 @@
         const porcentaje = card.getAttribute('data-porcentaje');
         card.style.setProperty('--porcentaje', porcentaje);
         const h2 = document.createElement('h2');
-        h2.textContent = porcentaje + '%';
+        if (porcenje<=20) {
+          h2.textContent = 'Nivel 1'
+        }
+        else if (porcenje<30){
+          h2.textContent = 'Nivel 2'
+        }
+        else if (porcenje<40){
+          h2.textContent = 'Nivel 3'
+        }
+        else if (porcenje<50){
+          h2.textContent = 'Nivel 4'
+        }
+        else if (porcenje<60){
+          h2.textContent = 'Nivel 5'
+        }
+        else if (porcenje<70){
+          h2.textContent = 'Nivel 6'
+        }
+        else if (porcenje<80){
+          h2.textContent = 'Nivel 7'
+        }
+        else if (porcenje<90){
+          h2.textContent = 'Nivel 8'
+        }
+        else if (porcenje<100){
+          h2.textContent = 'Nivel 9'
+        }
+        else if (porcenje==100){
+          h2.textContent = 'Nivel 10'
+        }
+        // h2.textContent = porcentaje + '%';
         
         card.querySelector('.number').innerHTML = '';
         card.querySelector('.number').appendChild(h2);
