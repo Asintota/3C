@@ -108,13 +108,17 @@
   function toggleBadges() {
   // Badges change opacity (activation)
     const mountain = document.getElementById('mountain');
-    const conditionMet = true; // Replace with your condition
+    const stars = document.getElementById('stars');
+    const conditionMet = false; // Replace with your condition
 
     if (conditionMet) {
         // If the condition is met, reset opacity and grayscale to normal
         mountain.style.filter = 'none'; // Remove grayscale
         mountain.style.opacity = '1'; // Set full opacity
-        mountain.title = 'Enhorabuena! Has alcanzado el nivel 8!';
+        mountain.title = 'Enhorabuena! Has conseguido el nivel 8!';
+        stars.style.filter = 'none'; // Remove grayscale
+        stars.style.opacity = '1'; // Set full opacity
+        stars.title = 'Enhorabuena! Has conseguido participar 3 semanas seguidas!';
     }
   }
 
