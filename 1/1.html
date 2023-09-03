@@ -65,7 +65,7 @@
           h2.textContent = 'Nivel 7'
         }
         else if (porcentaje<90){
-          h2.textContent = 'Nivel 8'
+          h2.textContent = 'Nivel \n 8'
         }
         else if (porcentaje<100){
           h2.textContent = 'Nivel 9'
@@ -150,6 +150,11 @@
         stars.style.filter = 'none'; // Remove grayscale
         stars.style.opacity = '1'; // Set full opacity
         stars.title = 'Enhorabuena! Has conseguido participar 3 semanas seguidas!';
+    }else {
+        mountain.style.filter ='grayscale(100%)';
+        mountain.style.opacity = '0.25';
+        stars.style.filter ='grayscale(100%)';
+        stars.style.opacity = '0.25';
     }
   }
 
