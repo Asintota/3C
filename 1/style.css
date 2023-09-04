@@ -169,7 +169,7 @@ svg circle
 }
 
 svg circle:nth-child(2) {
-  stroke-dasharray: 251;
+  /* stroke-dasharray: 251; */
   stroke-dashoffset: 251;
 }
 .greater-than-0 svg circle:nth-child(2) {
