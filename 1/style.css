@@ -182,7 +182,7 @@ svg circle:nth-child(2) {
   stroke: rgb(30, 227, 23);
 }
 .greater-than-40 svg circle:nth-child(2) {
-  stroke-dasharray: 200 51;
+  stroke-dasharray: 51;
   stroke: yellow;
 }
 .greater-than-80 svg circle:nth-child(2) {
