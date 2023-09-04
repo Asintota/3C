@@ -92,8 +92,8 @@ body {
 
 .percent {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   box-shadow: inset 0 0 25px #000;
   background: #222;
@@ -166,7 +166,7 @@ svg circle
   stroke: #191919;
   stroke-width: 10;
   stroke-linecap: round;
-  transform: translate(5px, 5px);
+  /*transform: translate(5px, 5px);*/
 }
 
 svg circle:nth-child(2) {
