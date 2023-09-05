@@ -38,7 +38,7 @@
     cards[2].setAttribute('data-porcentaje', val3[1]);
     cards[3].setAttribute('data-porcentaje', val4[1]);
   
-      cards.forEach((card) => {
+    cards.forEach((card) => {
         card.addEventListener('click', handleClick);
         const porcentaje = card.getAttribute('data-porcentaje');
         card.style.setProperty('--porcentaje', porcentaje);
@@ -107,19 +107,21 @@
         var circle = 251*(1-porcentaje/100);
         card.style.setProperty('--circle', circle); 
         console.log('circle: ',circle)
-      });
-      });
     });
-    function handleClick(event) {
+    
+  });
+    toggleBadges(val1);  
+  });
+  function handleClick(event) {
       const card = event.target.closest('.card');
       if (card) {
         card.classList.toggle('clicked');
         console.log(card.getAttribute('class'));
       }
-    } 
+  } 
 
     // Function to toggle between images
-    function toggleImages(val1) {
+  function toggleImages(val1) {
         const astronaut1 = document.getElementById('astronaut1');
         const astronaut2 = document.getElementById('astronaut2');
         console.log('val1 images',val1[1]);
@@ -133,9 +135,9 @@
             astronaut2.style.display = 'block';
             console.log('Display astronaut');
         }
-    }
+  }
     // Call the toggleImages function when the window loads
-    window.onload = toggleImages;
+  window.onload = toggleImages;
   
   
   
@@ -144,7 +146,7 @@
  
 
 
-    function toggleBadges(val1) {
+  function toggleBadges(val1) {
       console.log('im here');
   // Badges change opacity (activation)
       const mountain = document.getElementById('mountain');
@@ -186,9 +188,9 @@
           stars.style.opacity = '0.5';
           console.log('condition not met');
       }
-    }
+  }
 
-    window.onload = toggleBadges;
+  window.onload = toggleBadges;
   
   
   
