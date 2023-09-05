@@ -110,43 +110,9 @@
     });
     
   });
-    toggleBadges(val1);  
-  });
-  function handleClick(event) {
-      const card = event.target.closest('.card');
-      if (card) {
-        card.classList.toggle('clicked');
-        console.log(card.getAttribute('class'));
-      }
-  } 
-
-    // Function to toggle between images
-  function toggleImages(val1) {
-        const astronaut1 = document.getElementById('astronaut1');
-        const astronaut2 = document.getElementById('astronaut2');
-        console.log('val1 images',val1[1]);
-        if (val1[1]<=25) {
-            // Display the first image and hide the second
-            astronaut1.style.display = 'block';
-            astronaut2.style.display = 'none';
-        } else {
-            // Display the second image and hide the first
-            astronaut1.style.display = 'none';
-            astronaut2.style.display = 'block';
-            console.log('Display astronaut');
-        }
-  }
-    // Call the toggleImages function when the window loads
-  window.onload = toggleImages;
-  
-  
-  
-  
-  
- 
-
-
-  function toggleBadges(val1) {
+    toggleBadges(val1);
+    
+    function toggleBadges(val1) {
       console.log('im here');
   // Badges change opacity (activation)
       const mountain = document.getElementById('mountain');
@@ -188,7 +154,43 @@
           stars.style.opacity = '0.5';
           console.log('condition not met');
       }
+    }
+  });
+  function handleClick(event) {
+      const card = event.target.closest('.card');
+      if (card) {
+        card.classList.toggle('clicked');
+        console.log(card.getAttribute('class'));
+      }
+  } 
+
+    // Function to toggle between images
+  function toggleImages(val1) {
+        const astronaut1 = document.getElementById('astronaut1');
+        const astronaut2 = document.getElementById('astronaut2');
+        console.log('val1 images',val1[1]);
+        if (val1[1]<=25) {
+            // Display the first image and hide the second
+            astronaut1.style.display = 'block';
+            astronaut2.style.display = 'none';
+        } else {
+            // Display the second image and hide the first
+            astronaut1.style.display = 'none';
+            astronaut2.style.display = 'block';
+            console.log('Display astronaut');
+        }
   }
+    // Call the toggleImages function when the window loads
+  window.onload = toggleImages;
+  
+  
+  
+  
+  
+ 
+
+
+
 
   //window.onload = toggleBadges;
   
