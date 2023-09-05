@@ -158,7 +158,7 @@
     const specificDate = new Date(new Date().getFullYear(), 8, 5); // December is month 11 (0-based index)
     // Get the current date
     const currentDate = new Date();
-    if (currentDate.toDateString() === specificDate.toDateString() && val1[1]>=80 ) {
+    if (currentDate.toDateString() === specificDate.toDateString() && val1[1]>=50 ) {
         mountain.style.filter = 'none'; // Remove grayscale
         mountain.style.opacity = '1'; // Set full opacity
         mountain.title = 'Enhorabuena! Has conseguido el nivel 8 de Astronauta!';
@@ -167,7 +167,6 @@
 
     if (conditionMet) {
         // If the condition is met, reset opacity and grayscale to normal
-      
         stars.style.filter = 'none'; // Remove grayscale
         stars.style.opacity = '1'; // Set full opacity
         stars.title = 'Enhorabuena! Has conseguido participar 3 semanas consecutivas!';
@@ -262,7 +261,7 @@
           
           <div class="box">
             <h2 class="text">Senador</h2>
-            <img id="senador1" src="../roles/senator/senator1.svg" width="100">
+            <img id="senador1" src="../roles/senator/senator1.svg" width="150">
             <!-- <img id="astronaut2" src="../roles/astronaut/Astronaut2.svg"> -->
             <h2 class="text">Nivel</h2>
             <div class="percent">
