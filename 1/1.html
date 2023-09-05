@@ -144,50 +144,50 @@
  
 
  // Check a condition here
-  function toggleBadges(val1,val2,val3,val4) {
+    function toggleBadges(val1) {
   // Badges change opacity (activation)
-    const mountain = document.getElementById('mountain');
-    const stars = document.getElementById('stars');
-    const heart = document.getElementById('heart');
-    const king = document.getElementById('king');
-    const conditionMet = true; // Replace with your condition
+      const mountain = document.getElementById('mountain');
+      const stars = document.getElementById('stars');
+      const heart = document.getElementById('heart');
+      const king = document.getElementById('king');
+      const conditionMet = true; // Replace with your condition
 
 
-    //CONDITION FOR MOUNTAIN
-    // Create a Date object for the specific date you want to check (e.g., December 12th)
-    const specificDate = new Date(new Date().getFullYear(), 8, 5); // December is month 11 (0-based index)
-    // Get the current date
-    const currentDate = new Date();
-    console.log('val1',val1[1])
-    if (currentDate.toDateString() === specificDate.toDateString() && val1[1] >= 50) {
-        mountain.style.filter = 'none'; // Remove grayscale
-        mountain.style.opacity = '1'; // Set full opacity
-        mountain.title = 'Enhorabuena! Has conseguido el nivel 8 de Astronauta!';
-    } 
+      //CONDITION FOR MOUNTAIN
+      // Create a Date object for the specific date you want to check (e.g., December 12th)
+      const specificDate = new Date(new Date().getFullYear(), 8, 5); // December is month 11 (0-based index)
+      // Get the current date
+      const currentDate = new Date();
+      console.log('val1',val1[1])
+      if (currentDate.toDateString() === specificDate.toDateString() && val1[1] >= 50) {
+          mountain.style.filter = 'none'; // Remove grayscale
+          mountain.style.opacity = '1'; // Set full opacity
+          mountain.title = 'Enhorabuena! Has conseguido el nivel 8 de Astronauta!';
+      } 
 
 
-    if (conditionMet) {
-        // If the condition is met, reset opacity and grayscale to normal
-        stars.style.filter = 'none'; // Remove grayscale
-        stars.style.opacity = '1'; // Set full opacity
-        stars.title = 'Enhorabuena! Has conseguido participar 3 semanas consecutivas!';
-        heart.style.filter = 'none'; // Remove grayscale
-        heart.style.opacity = '1'; // Set full opacity
-        heart.title = 'Enhorabuena! Has conseguido el nivel 8 de Senador!';
-        king.style.filter = 'none'; // Remove grayscale
-        king.style.opacity = '1'; // Set full opacity
-        king.title = 'Enhorabuena! Has conseguido ayudar a tus compañeros 3 semanas consecutivas!';
-        console.log('condition  met');
-    }else {
-        mountain.style.filter ='grayscale(100%)';
-        mountain.style.opacity = '0.5';
-        stars.style.filter ='grayscale(100%)';
-        stars.style.opacity = '0.5';
-        console.log('condition not met');
+      if (conditionMet) {
+          // If the condition is met, reset opacity and grayscale to normal
+          stars.style.filter = 'none'; // Remove grayscale
+          stars.style.opacity = '1'; // Set full opacity
+          stars.title = 'Enhorabuena! Has conseguido participar 3 semanas consecutivas!';
+          heart.style.filter = 'none'; // Remove grayscale
+          heart.style.opacity = '1'; // Set full opacity
+          heart.title = 'Enhorabuena! Has conseguido el nivel 8 de Senador!';
+          king.style.filter = 'none'; // Remove grayscale
+          king.style.opacity = '1'; // Set full opacity
+          king.title = 'Enhorabuena! Has conseguido ayudar a tus compañeros 3 semanas consecutivas!';
+          console.log('condition  met');
+      }else {
+          mountain.style.filter ='grayscale(100%)';
+          mountain.style.opacity = '0.5';
+          stars.style.filter ='grayscale(100%)';
+          stars.style.opacity = '0.5';
+          console.log('condition not met');
+      }
     }
-  }
 
-  window.onload = toggleBadges;
+    window.onload = toggleBadges;
   
   
   
