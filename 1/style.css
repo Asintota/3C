@@ -236,13 +236,13 @@ ul {
 }
 
 
-#astronaut1 {
+/* #astronaut1 {
   display: none;
 }
 
 #astronaut2 {
   display: none;
-}
+} */
 
 /* Apply grayscale and transparency to the SVG image */
 #mountain {
