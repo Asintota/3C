@@ -173,12 +173,12 @@ svg circle:nth-child(2) {
   stroke-dashoffset: 0;
 }
 .greater-than-0 svg circle:nth-child(2) {
-  stroke-dasharray: 225 26;
+  stroke-dasharray: 25 226;
   stroke: white;
 }
 
 .greater-than-20 svg circle:nth-child(2) {
-  stroke-dashoffset: var(--circle);
+  stroke-dasharray: var(--circle) calc(251 - var(--circle));
   stroke: rgb(30, 227, 23);
 }
 .greater-than-40 svg circle:nth-child(2) {
