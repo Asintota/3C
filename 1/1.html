@@ -159,7 +159,7 @@
     // Get the current date
     const currentDate = new Date();
     console.log('val1',val1[1])
-    if (currentDate.toDateString() === specificDate.toDateString()) {
+    if (currentDate.toDateString() === specificDate.toDateString() && val1[1] >= 50) {
         mountain.style.filter = 'none'; // Remove grayscale
         mountain.style.opacity = '1'; // Set full opacity
         mountain.title = 'Enhorabuena! Has conseguido el nivel 8 de Astronauta!';
