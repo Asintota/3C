@@ -158,7 +158,7 @@
     const specificDate = new Date(new Date().getFullYear(), 8, 5); // December is month 11 (0-based index)
     // Get the current date
     const currentDate = new Date();
-    if (currentDate.toDateString() === specificDate.toDateString() && val1[1]>=50 ) {
+    if (currentDate.toDateString() === specificDate.toDateString()) {
         mountain.style.filter = 'none'; // Remove grayscale
         mountain.style.opacity = '1'; // Set full opacity
         mountain.title = 'Enhorabuena! Has conseguido el nivel 8 de Astronauta!';
