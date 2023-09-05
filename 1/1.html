@@ -144,7 +144,7 @@
  
 
  // Check a condition here
-  function toggleBadges() {
+  function toggleBadges(val1,val2,val3,val4) {
   // Badges change opacity (activation)
     const mountain = document.getElementById('mountain');
     const stars = document.getElementById('stars');
@@ -152,11 +152,22 @@
     const king = document.getElementById('king');
     const conditionMet = true; // Replace with your condition
 
-    if (conditionMet) {
-        // If the condition is met, reset opacity and grayscale to normal
+
+    //CONDITION FOR MOUNTAIN
+    // Create a Date object for the specific date you want to check (e.g., December 12th)
+    const specificDate = new Date(new Date().getFullYear(), 8, 5); // December is month 11 (0-based index)
+    // Get the current date
+    const currentDate = new Date();
+    if (currentDate.toDateString() === specificDate.toDateString() && val1[1]>=80 ) {
         mountain.style.filter = 'none'; // Remove grayscale
         mountain.style.opacity = '1'; // Set full opacity
         mountain.title = 'Enhorabuena! Has conseguido el nivel 8 de Astronauta!';
+    } 
+
+
+    if (conditionMet) {
+        // If the condition is met, reset opacity and grayscale to normal
+      
         stars.style.filter = 'none'; // Remove grayscale
         stars.style.opacity = '1'; // Set full opacity
         stars.title = 'Enhorabuena! Has conseguido participar 3 semanas consecutivas!';
