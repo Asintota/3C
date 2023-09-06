@@ -178,6 +178,7 @@ $(document).ready(function() {
             // Check for consecutive "1" values
           let consecutiveCount = 0;
           for (let i = 0; i < cellValueArray.length; i++) {
+              console.log("cell value: ", cellValueArray[i]);
               if (cellValueArray[i] === '1') {
                   consecutiveCount++;
                   if (consecutiveCount === consecutiveOnes) {
@@ -188,7 +189,7 @@ $(document).ready(function() {
                       break; // No need to check further in this column
                   }
               } else {
-              consecutiveCount = 0; // Reset the count if a non-"1" value is encountered
+                consecutiveCount = 0; // Reset the count if a non-"1" value is encountered
               }
           }
         }
