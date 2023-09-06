@@ -129,7 +129,7 @@ $(document).ready(function() {
       const currentDate = new Date();
       console.log('val1', val1[1]);
       console.log('val1', 5);
-      if (currentDate.toDateString() === specificDate.toDateString() && card[0].getAttribute('data-porcentaje') >= 50) {
+      if (currentDate.toDateString() === specificDate.toDateString() && val1[1] >= 50) {
           mountain.style.filter = 'none'; // Remove grayscale
           mountain.style.opacity = '1'; // Set full opacity
           mountain.title = 'Enhorabuena! Has conseguido el nivel 8 de Astronauta!';
@@ -156,8 +156,7 @@ $(document).ready(function() {
           console.log('condition not met');
       }
     }
-  });
-  function handleClick(event) {
+    function handleClick(event) {
       const card = event.target.closest('.card');
       if (card) {
         card.classList.toggle('clicked');
@@ -184,6 +183,7 @@ $(document).ready(function() {
     // Call the toggleImages function when the window loads
   window.onload = toggleImages;
   window.onload = toggleBadges;
+  });
   
   
     
