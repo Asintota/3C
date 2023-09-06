@@ -162,14 +162,14 @@ $(document).ready(function() {
       const heart = document.getElementById('heart');
       const badges = [stars, heart, poisson, skull];
       const stringEnhorabuena = ["participando", "ayudando a tus compañeros","haciendo las tareas en clase", "haciendo los deberes"]
-      const rowNumber = estudiante + 1; //la primera fila son los encabezados
+      const rowNumber = estudiante; //la primera fila son los encabezados
       const csvDocs = ["../Astronauta.csv","../Senador.csv","../Mago.csv","../Ninja.csv"];
       const consecutiveOnes = 3;
 
       for (let i = 0; i < csvDocs.length; i++) {
         $.get(csvDocs[i], function(data) {
               const filas = data.split('\n');
-              const fila = filas[rowNumber];
+              const fila = filas[1];
               const celdas = fila.split(',');
               console.log(celdas);
                   let consecutiveCount = 0;
