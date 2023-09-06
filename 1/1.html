@@ -11,11 +11,12 @@
 
 
   <script>
-  $(document).ready(function() {
   const val1 = [];
   const val2 = [];
   const val3 = [];
   const val4 = [];
+$(document).ready(function() {
+
 
   $.get("../datos.csv", function(data) {
     const filas = data.split('\n');
@@ -110,9 +111,8 @@
     });
     
   });
-    toggleBadges(val1);
-    
-    function toggleBadges(val1) {
+        
+    function toggleBadges() {
       console.log('im here');
   // Badges change opacity (activation)
       const mountain = document.getElementById('mountain');
@@ -182,7 +182,7 @@
   }
     // Call the toggleImages function when the window loads
   window.onload = toggleImages;
-  
+  window.onload = toggleBadges;
   
   
   
