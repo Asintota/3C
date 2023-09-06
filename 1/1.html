@@ -163,13 +163,13 @@ $(document).ready(function() {
       const heart = document.getElementById('heart');
       const badges = [stars, heart, poisson, skull];
       const stringEnhorabuena = ["participando", "ayudando a tus compañeros","haciendo las tareas en clase", "haciendo los deberes"]
-
+      const rowNumber = estudiante + 1; //la primera fila son los encabezados
       for (let i = 0; i < sheets.length; i++) {
        const sheet =  workbook.Sheets[sheets[i]];
        const range = XLSX.utils.decode_range(sheet['!ref']);
        const consecutiveOnes = 3;
        for (let col = range.s.c; col <= range.e.c; col++) {
-          const cellAddress = XLSX.utils.encode_cell({ r: estudiante, c: col });
+          const cellAddress = XLSX.utils.encode_cell({ r: rowNumber, c: col });
           const cellValue = sheet[cellAddress] ? sheet[cellAddress].v : ''; // Get the cell's value
 
             // Split the cell value into an array of characters
