@@ -124,11 +124,11 @@ $(document).ready(function() {
 
       //CONDITION FOR MOUNTAIN
       // Create a Date object for the specific date you want to check (e.g., December 12th)
-      const specificDate = new Date(new Date().getFullYear(), 8, 5); // December is month 11 (0-based index)
+      const specificDate = new Date(new Date().getFullYear(), 8, 6); // December is month 11 (0-based index)
       // Get the current date
       const currentDate = new Date();
       console.log('val1', val1[1]);
-      console.log('val1', 5);
+
       if (currentDate.toDateString() === specificDate.toDateString() && val1[1] >= 50) {
           mountain.style.filter = 'none'; // Remove grayscale
           mountain.style.opacity = '1'; // Set full opacity
