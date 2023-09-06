@@ -177,7 +177,7 @@ $(document).ready(function() {
                     if (celdas[j] === '1') {
                       consecutiveCount++;
                       if (consecutiveCount === consecutiveOnes) {
-                          console.log(`Found ${consecutiveOnes} consecutive "1" values in column ${col}`);
+                          console.log(`Found ${consecutiveOnes} consecutive "1" values in column ${j}`);
                           badges[i].style.filter = 'none'; // Remove grayscale
                           badges[i].style.opacity = '1'; // Set full opacity
                           badges[i].title = "Enhorabuena! Has conseguido una racha de 3 semanas consecutivas " + stringEnhorabuena[i];
