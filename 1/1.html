@@ -113,7 +113,7 @@ $(document).ready(function() {
     
   });
     
-    function toggleBadges() {
+  function toggleBadges() {
       console.log('im here');
   // Badges change opacity (activation)
       const mountain = document.getElementById('mountain');
@@ -193,7 +193,7 @@ $(document).ready(function() {
           }
         }
       }
-
+    }
       //
 
 
@@ -205,10 +205,10 @@ $(document).ready(function() {
         card.classList.toggle('clicked');
         console.log(card.getAttribute('class'));
       }
-  } 
+    } 
 
     // Function to toggle between images
-  function toggleImages(val1) {
+    function toggleImages(val1) {
         const astronaut1 = document.getElementById('astronaut1');
         const astronaut2 = document.getElementById('astronaut2');
         console.log('val1 images',val1[1]);
@@ -222,11 +222,11 @@ $(document).ready(function() {
             astronaut2.style.display = 'block';
             console.log('Display astronaut');
         }
-  }
+    }
     // Call the toggleImages function when the window loads
-  window.onload = toggleImages;
-  window.onload = toggleBadges;
-  }
+    window.onload = toggleImages;
+    window.onload = toggleBadges;
+  
   
 });
   
