@@ -169,7 +169,7 @@ $(document).ready(function() {
        const range = XLSX.utils.decode_range(sheet['!ref']);
        const consecutiveOnes = 3;
        for (let col = range.s.c; col <= range.e.c; col++) {
-          const cellAddress = XLSX.utils.encode_cell({ r: rowNumber, c: col });
+          const cellAddress = XLSX.utils.encode_cell({ r: estudiante, c: col });
           const cellValue = sheet[cellAddress] ? sheet[cellAddress].v : ''; // Get the cell's value
 
             // Split the cell value into an array of characters
@@ -208,15 +208,23 @@ $(document).ready(function() {
     } 
 
     // Function to toggle between images
-    function toggleImages(val1) {
+    function toggleImages() {
         const astronaut1 = document.getElementById('astronaut1');
         const astronaut2 = document.getElementById('astronaut2');
-        console.log('val1 images',val1[1]);
+        // const astronaut3 = document.getElementById('astronaut3');
+        // const astronaut4 = document.getElementById('astronaut4');
+        
+        
+        // const val = [val1[estudiante],val2[estudiante], val3[estudiante], val4[estudiante]];
+        // for (let i = 0; i < val.length; i++) {
+          
+        // }
+        
         if (val1[1]<=25) {
             // Display the first image and hide the second
             astronaut1.style.display = 'block';
             astronaut2.style.display = 'none';
-        } else {
+        } else  {
             // Display the second image and hide the first
             astronaut1.style.display = 'none';
             astronaut2.style.display = 'block';
