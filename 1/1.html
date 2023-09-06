@@ -11,6 +11,7 @@
 
 
   <script>
+  const estudiante = 1;
   const val1 = [];
   const val2 = [];
   const val3 = [];
@@ -28,16 +29,16 @@ $(document).ready(function() {
       val4.push(celdas[4]);
     });
 
-    console.log(`Valor actual: ${val1[1]}`)
-    console.log(`Valor actual: ${val2[1]}`)
-    console.log(`Valor actual: ${val3[1]}`)
-    console.log(`Valor actual: ${val4[1]}`)
+    console.log(`Valor actual: ${val1[estudiante]}`)
+    console.log(`Valor actual: ${val2[estudiante]}`)
+    console.log(`Valor actual: ${val3[estudiante]}`)
+    console.log(`Valor actual: ${val4[estudiante]}`)
 
     const cards = document.querySelectorAll('.card');
-    cards[0].setAttribute('data-porcentaje', val1[1]);
-    cards[1].setAttribute('data-porcentaje', val2[1]);
-    cards[2].setAttribute('data-porcentaje', val3[1]);
-    cards[3].setAttribute('data-porcentaje', val4[1]);
+    cards[0].setAttribute('data-porcentaje', val1[estudiante]);
+    cards[1].setAttribute('data-porcentaje', val2[estudiante]);
+    cards[2].setAttribute('data-porcentaje', val3[estudiante]);
+    cards[3].setAttribute('data-porcentaje', val4[estudiante]);
   
     cards.forEach((card) => {
         card.addEventListener('click', handleClick);
@@ -116,46 +117,88 @@ $(document).ready(function() {
       console.log('im here');
   // Badges change opacity (activation)
       const mountain = document.getElementById('mountain');
-      const stars = document.getElementById('stars');
-      const heart = document.getElementById('heart');
       const king = document.getElementById('king');
-      const conditionMet = true; // Replace with your condition
+      const thunder = document.getElementById('thunder');
+      const viking = document.getElementById('viking');
 
-
+      const conditionMet = true;
       //CONDITION FOR MOUNTAIN
       // Create a Date object for the specific date you want to check (e.g., December 12th)
-      const specificDate = new Date(new Date().getFullYear(), 8, 6); // December is month 11 (0-based index)
+      const specificDate = new Date(new Date().getFullYear(), 11, 12); // December is month 11 (0-based index)
       // Get the current date
       const currentDate = new Date();
-      console.log('val1', val1[1]);
+      console.log('val1', val1[estudiante]);
 
-      if (currentDate.toDateString() === specificDate.toDateString() && val1[1] >= 50) {
+      if (currentDate.toDateString() === specificDate.toDateString() && val1[estudiante] >= 80) {
           mountain.style.filter = 'none'; // Remove grayscale
           mountain.style.opacity = '1'; // Set full opacity
           mountain.title = 'Enhorabuena! Has conseguido el nivel 8 de Astronauta!';
       } 
-
-
-      if (conditionMet) {
-          // If the condition is met, reset opacity and grayscale to normal
-          stars.style.filter = 'none'; // Remove grayscale
-          stars.style.opacity = '1'; // Set full opacity
-          stars.title = 'Enhorabuena! Has conseguido participar 3 semanas consecutivas!';
-          heart.style.filter = 'none'; // Remove grayscale
-          heart.style.opacity = '1'; // Set full opacity
-          heart.title = 'Enhorabuena! Has conseguido el nivel 8 de Senador!';
+      if (currentDate.toDateString() === specificDate.toDateString() && val2[estudiante] >= 80) {
           king.style.filter = 'none'; // Remove grayscale
           king.style.opacity = '1'; // Set full opacity
-          king.title = 'Enhorabuena! Has conseguido ayudar a tus compañeros 3 semanas consecutivas!';
-          console.log('condition  met');
-      }else {
-          mountain.style.filter ='grayscale(100%)';
-          mountain.style.opacity = '0.5';
-          stars.style.filter ='grayscale(100%)';
-          stars.style.opacity = '0.5';
-          console.log('condition not met');
+          king.title = 'Enhorabuena! Has conseguido el nivel 8 de Senador!';
+      } 
+      if (currentDate.toDateString() === specificDate.toDateString() && val3[estudiante] >= 80) {
+          thunder.style.filter = 'none'; // Remove grayscale
+          thunder.style.opacity = '1'; // Set full opacity
+          thunder.title = 'Enhorabuena! Has conseguido el nivel 8 de Mago!';
+      } 
+      if (currentDate.toDateString() === specificDate.toDateString() && val3[estudiante] >= 80) {
+          viking.style.filter = 'none'; // Remove grayscale
+          viking.style.opacity = '1'; // Set full opacity
+          viking.title = 'Enhorabuena! Has conseguido el nivel 8 de Ninja!';
+      } 
+
+
+      // Rachas logros
+
+      //Load excel xlsx
+      const XLSX = require('xlsx');
+      const workbook = XLSX.readFile('../actitud.xlsx');
+      const sheets = ["Astronauta", "Senador", "Mago", "Guerrero"];
+      const poisson = document.getElementById('poisson');
+      const skull = document.getElementById('skull');
+      const stars = document.getElementById('stars');
+      const heart = document.getElementById('heart');
+      const badges = [stars, heart, poisson, skull];
+      const stringEnhorabuena = ["participando", "ayudando a tus compañeros","haciendo las tareas en clase", "haciendo los deberes"]
+
+      for (let i = 0; i < sheets.length; i++) {
+       const sheet =  workbook.Sheets[sheets[i]];
+       const range = XLSX.utils.decode_range(sheet['!ref']);
+       const consecutiveOnes = 3;
+       for (let col = range.s.c; col <= range.e.c; col++) {
+          const cellAddress = XLSX.utils.encode_cell({ r: rowNumber, c: col });
+          const cellValue = sheet[cellAddress] ? sheet[cellAddress].v : ''; // Get the cell's value
+
+            // Split the cell value into an array of characters
+          const cellValueArray = cellValue.toString().split('');
+
+            // Check for consecutive "1" values
+          let consecutiveCount = 0;
+          for (let i = 0; i < cellValueArray.length; i++) {
+              if (cellValueArray[i] === '1') {
+                  consecutiveCount++;
+                  if (consecutiveCount === consecutiveOnes) {
+                      console.log(`Found ${consecutiveOnes} consecutive "1" values in column ${col}`);
+                      badges[i].style.filter = 'none'; // Remove grayscale
+                      badges[i].style.opacity = '1'; // Set full opacity
+                      badges[i].title = "Enhorabuena! Has conseguido una racha de 3 semanas consecutivas " + stringEnhorabuena[i];
+                      break; // No need to check further in this column
+                  }
+              } else {
+              consecutiveCount = 0; // Reset the count if a non-"1" value is encountered
+              }
+          }
+        }
       }
-    }
+
+      //
+
+
+
+
     function handleClick(event) {
       const card = event.target.closest('.card');
       if (card) {
@@ -369,10 +412,10 @@ $(document).ready(function() {
           <table>
             <tr>
               <td>
-                <img id="viking" src="../badges/viking.svg" alt="SVG Image" title="Se desbloquea al tener una racha de 3 semanas consecutivas haciendo los deberes">
+                <img id="viking" src="../badges/viking.svg" alt="SVG Image" title="Se desbloquea al traer siempre los deberes">
               </td>
               <td>
-                <img id="skull" src="../badges/skull.svg" alt="SVG Image" title="Se desbloquea al traer siempre los deberes">
+                <img id="skull" src="../badges/skull.svg" alt="SVG Image" title="Se desbloquea al tener una racha de 3 semanas consecutivas haciendo los deberes">
               </td>
           </tr>
           </table>
