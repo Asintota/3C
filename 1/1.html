@@ -167,11 +167,12 @@ $(document).ready(function() {
       const consecutiveOnes = 3;
 
       for (let i = 0; i < csvDocs.length; i++) {
+        console.log(i);
         fetch(csvDocs[i])
             .then(response => response.text())
             .then(data => {
             // Split the CSV data into rows
-            const rows = data.split('\n');
+            const rows = data.split('\r');
             console.log(rows);
             // Check if the rowIndex is within the valid range
             if (rowNumber >= 0 && rowNumber < rows.length) {
