@@ -169,7 +169,7 @@ $(document).ready(function() {
       for (let i = 0; i < csvDocs.length; i++) {
         $.get(csvDocs[i], function(data) {
               const filas = data.split('\n');
-              const fila = filas[1];
+              const fila = filas[0];
               const celdas = fila.split(',');
               console.log(celdas);
                   let consecutiveCount = 0;
