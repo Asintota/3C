@@ -194,13 +194,13 @@ $(document).ready(function() {
         
         
         $.get(csvDocs[i], function(data) {
-              const filas = data.split('\r');
+              const filas = data.split(/\r?\n/);
               const fila = filas[rowNumber];
               const celdas = fila.split(',');
         //      console.log(celdas);
                   let consecutiveCount = 0;
                   for (let j = 1; j<celdas.length; j++) { //starts at 1 because first column is a string
-          //          console.log("cell value: ", celdas[j]);
+                    console.log("cell value: ", celdas[j]);
                     if (celdas[j] === '1') {
                       consecutiveCount++;
                       if (consecutiveCount === consecutiveOnes) {
