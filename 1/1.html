@@ -167,14 +167,39 @@ $(document).ready(function() {
       const consecutiveOnes = 3;
 
       for (let i = 0; i < csvDocs.length; i++) {
+        fetch(csvDocs[i])
+            .then(response => response.text())
+            .then(data => {
+            // Split the CSV data into rows
+            const rows = data.split('\n');
+    
+            // Check if the rowIndex is within the valid range
+            if (rowNumber >= 0 && rowNumber < rows.length) {
+              // Access the specific row by index
+                const row = rows[rowNumber];
+      
+              // Split the row into cells using a comma as the delimiter
+                const cells = row.split(',');
+      
+              // Now, you can access the cells of the specified row using the cells array
+                console.log(cells);
+            } else {
+                console.log("Row index is out of range.");
+            }
+          })
+        .catch(error => {
+          console.error("Error fetching CSV file:", error);
+        });
+        
+        
         $.get(csvDocs[i], function(data) {
               const filas = data.split('\n');
               const fila = filas[0];
               const celdas = fila.split(',');
-              console.log(celdas);
+        //      console.log(celdas);
                   let consecutiveCount = 0;
                   for (let j = 1; j<celdas.length; j++) { //starts at 1 because first column is a string
-                    console.log("cell value: ", celdas[j]);
+          //          console.log("cell value: ", celdas[j]);
                     if (celdas[j] === '1') {
                       consecutiveCount++;
                       if (consecutiveCount === consecutiveOnes) {
