@@ -172,7 +172,7 @@ $(document).ready(function() {
             .then(data => {
             // Split the CSV data into rows
             const rows = data.split('\n');
-    
+            console.log(rows);
             // Check if the rowIndex is within the valid range
             if (rowNumber >= 0 && rowNumber < rows.length) {
               // Access the specific row by index
