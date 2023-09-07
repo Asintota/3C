@@ -19,7 +19,7 @@
 $(document).ready(function() {
 
 
-  $.get("../datos.csv", function(data) {
+  $.get("../csv/datos.csv", function(data) {
     const filas = data.split('\n');
     filas.forEach((fila) => {
       const celdas = fila.split(',');
@@ -124,16 +124,33 @@ $(document).ready(function() {
       const conditionMet = true;
       //CONDITION FOR MOUNTAIN
       // Create a Date object for the specific date you want to check (e.g., December 12th)
-      const specificDate = new Date(new Date().getFullYear(), 11, 12); // December is month 11 (0-based index)
+      const year1 = Date().getFullYear();
+      const year2 = year1+1;
+      const primeraEvaluacion = new Date(year1, 11, 12); // December is month 11 (0-based index)
+      const segundaEvaluacion = new Date(year2, 2, 11); // December is month 11 (0-based index)
+      const terceraEvaluacion = new Date(year2, 5, 12); // December is month 11 (0-based index)
+      const segundoTrimestre = new Date(year2, 0, 7);
+      const tercerTrimestre = new Date(year2, 3, 1);
       // Get the current date
       const currentDate = new Date();
       console.log('val1', val1[estudiante]);
 
-      if (currentDate.toDateString() === specificDate.toDateString() && val1[estudiante] >= 80) {
+
+      const blockBadge = false;
+      if ((currentDate.toDateString() === primeraEvaluacion.toDateString() || currentDate.toDateString() === segundaEvaluacion.toDateString() || urrentDate.toDateString() === terceraEvaluacion.toDateString()) && val1[estudiante] >= 80) {
+          blockBadge = true;
+      } 
+      if (blockBadge) {
           mountain.style.filter = 'none'; // Remove grayscale
           mountain.style.opacity = '1'; // Set full opacity
           mountain.title = 'Enhorabuena! Has conseguido el nivel 8 de Astronauta!';
-      } 
+      }
+      if (currentDate.toDateString() === segundoTrimestre && blockBadge) {
+          blockBadge = false;
+          mountain.style.filter = 'grayscale(100%)';           
+          mountain.style.opacity = '0.25'; // 
+          mountain.title = '"Se desbloquea al terminar el trimestre con nivel superior a 8"';
+      }
       if (currentDate.toDateString() === specificDate.toDateString() && val2[estudiante] >= 80) {
           king.style.filter = 'none'; // Remove grayscale
           king.style.opacity = '1'; // Set full opacity
