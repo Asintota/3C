@@ -124,7 +124,7 @@ $(document).ready(function() {
       const conditionMet = true;
       //CONDITION FOR MOUNTAIN
       // Create a Date object for the specific date you want to check (e.g., December 12th)
-      const year1 = Date().getFullYear();
+      const year1 = new Date().getFullYear();
       const year2 = year1+1;
       const primeraEvaluacion = new Date(year1, 11, 12); // December is month 11 (0-based index)
       const segundaEvaluacion = new Date(year2, 2, 11); // December is month 11 (0-based index)
@@ -133,13 +133,59 @@ $(document).ready(function() {
       const tercerTrimestre = new Date(year2, 3, 1);
       // Get the current date
       const currentDate = new Date();
-      console.log('val1', val1[estudiante]);
+      console.log('val1', val1[estudiante]);  
+      // Store in variables.txt the 8 level badge status
+      const fs = require('fs');
+	// Specify the file path
+      const filePath = '../temp/variables.txt';	
+/ Read the contents of the text file
+      fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+        console.error('Error reading file:', err);
+      } else {
+        // Store the file contents in a variable
+		const blockBadge = data;
+        console.log('File contents:', blockBadge);
+      }
+      }); 
+	  
+      if ((currentDate.toDateString() === segundoTrimestre.toDateString() || currentDate.toDateString() === segundoTrimestre.toDateString() || currentDate.toDateString() === terceraEvaluacion.toDateString()) && val1[estudiante] >= 80) {
+		fs.truncate(filePath, 0, (err) => {
+			if (err) {
+				console.error('Error truncating file:', err);
+			} else {
+				console.log('File truncated successfully.');
+			}
+		});
+		// Write to a text file
+		fs.writeFile(filePath, "true", (err) => {
+		if (err) {
+			console.error('Error writing to file:', err);
+		} else {
+			console.log('File written successfully.');
+		}
+		});
+	}
+
+      if ((currentDate.toDateString() === segundoTrimestre.toDateString()) || (currentDate.toDateString() === tercerTrimestre.toDateString())) {
+		fs.truncate(filePath, 0, (err) => {
+			if (err) {
+				console.error('Error truncating file:', err);
+			} else {
+				console.log('File truncated successfully.');
+			}
+		});
+		// Write to a text file
+		fs.writeFile('../temp/variables.txt', "false", (err) => {
+		if (err) {
+			console.error('Error writing to file:', err);
+		} else {
+			console.log('File written successfully.');
+		}
+		});
+	  }
 
 
-      const blockBadge = false;
-      if ((currentDate.toDateString() === primeraEvaluacion.toDateString() || currentDate.toDateString() === segundaEvaluacion.toDateString() || urrentDate.toDateString() === terceraEvaluacion.toDateString()) && val1[estudiante] >= 80) {
-          blockBadge = true;
-      } 
       if (blockBadge) {
           mountain.style.filter = 'none'; // Remove grayscale
           mountain.style.opacity = '1'; // Set full opacity
