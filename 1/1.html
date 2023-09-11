@@ -133,17 +133,13 @@ $(document).ready(function() {
       const tercerTrimestre = new Date(year2, 3, 1);
       // Get the current date
       const currentDate = new Date();
-      console.log('val1', val1[estudiante]);
-
-      
-	  
-	  const fs = require('fs');
-
+      console.log('val1', val1[estudiante]);  
+      // Store in variables.txt the 8 level badge status
+      const fs = require('fs');
 	// Specify the file path
-	  const filePath = '../temp/variables.txt';	
-
-	// Read the contents of the text file
-	  fs.readFile(filePath, 'utf8', (err, data) => {
+      const filePath = '../temp/variables.txt';	
+/ Read the contents of the text file
+      fs.readFile(filePath, 'utf8', (err, data) => {
       if (err) {
         console.error('Error reading file:', err);
       } else {
@@ -151,9 +147,7 @@ $(document).ready(function() {
 		const blockBadge = data;
         console.log('File contents:', blockBadge);
       }
-	  });
-
-	  
+      }); 
 	  
       if ((currentDate.toDateString() === segundoTrimestre.toDateString() || currentDate.toDateString() === segundoTrimestre.toDateString() || currentDate.toDateString() === terceraEvaluacion.toDateString()) && val1[estudiante] >= 80) {
 		fs.truncate(filePath, 0, (err) => {
@@ -164,14 +158,14 @@ $(document).ready(function() {
 			}
 		});
 		// Write to a text file
-		fs.writeFile('../temp/variables.txt', "true", (err) => {
+		fs.writeFile(filePath, "true", (err) => {
 		if (err) {
 			console.error('Error writing to file:', err);
 		} else {
 			console.log('File written successfully.');
 		}
 		});
-	  }
+	}
 
       if ((currentDate.toDateString() === segundoTrimestre.toDateString()) || (currentDate.toDateString() === tercerTrimestre.toDateString())) {
 		fs.truncate(filePath, 0, (err) => {
