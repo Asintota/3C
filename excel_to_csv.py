@@ -1,12 +1,16 @@
+import os
 import pandas as pd
 
 # Especifica la ruta del archivo XLSX
-actitud_excel = 'C:/Users/pablo/OneDrive/Github/Progreso/actitud.xlsx'
-csv_file = 'C:/Users/pablo/OneDrive/Github/Progreso/csv/datos.csv'
-csv_astronauta = 'C:/Users/pablo/OneDrive/Github/Progreso/csv/Astronauta.csv'
-csv_senador = 'C:/Users/pablo/OneDrive/Github/Progreso/csv/Senador.csv'
-csv_ninja = 'C:/Users/pablo/OneDrive/Github/Progreso/csv/Ninja.csv'
-csv_mago = 'C:/Users/pablo/OneDrive/Github/Progreso/csv/Mago.csv'
+script_directory = os.path.dirname(os.path.abspath(__file__))
+filename = "actitud.xlsx"
+file_path = os.path.join(script_directory, filename)
+actitud_excel = file_path
+csv_file = os.path.join(script_directory,'csv/datos.csv')
+csv_astronauta = os.path.join(script_directory,'csv/Astronauta.csv')
+csv_senador = os.path.join(script_directory,'csv/Senador.csv')
+csv_ninja = os.path.join(script_directory,'csv/Ninja.csv')
+csv_mago = os.path.join(script_directory,'csv/Mago.csv')
 
 # Lee el archivo XLSX en un DataFrame de pandas
 
@@ -32,7 +36,8 @@ Senador_resultados = Senador['Resultados']
 Mago_resultados = Mago['Resultados']
 Ninja_resultados = Ninja['Resultados']
 
-
+# Extract the "Alumnos" column
+Alumnos = Astronauta['Alumnos']
 #
 
 # Read the CSV file into a DataFrame
@@ -43,9 +48,10 @@ df_csv['Astronauta'] = Astronauta_resultados
 df_csv['Senador'] = Senador_resultados
 df_csv['Mago'] = Mago_resultados
 df_csv['Ninja'] = Ninja_resultados
-
+df_csv['Alumnos'] = Alumnos
 # Write the updated DataFrame back to the CSV file
 df_csv.to_csv(csv_file, index=False)
+
 print(f"Excel file has been converted to CSV file 'datos.csv'.")
 
 print("Work done")
