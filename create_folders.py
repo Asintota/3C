@@ -3,8 +3,10 @@ import shutil
 import openpyxl
 
 # Specify the path to your Excel file
-file_path = 'C:\Users\pablo\OneDrive\Github\3C\actitud.xlsx'
-
+script_directory = os.path.dirname(os.path.abspath(__file__))
+filename = "actitud.xlsx"
+file_path = os.path.join(script_directory, filename)
+print(file_path)
 # Load the workbook
 workbook = openpyxl.load_workbook(file_path)
 
@@ -22,13 +24,13 @@ workbook.close()
 
 
 
-source_folder = r'C:\Users\pablo\OneDrive\Github\3C\1'
-destination_base = r'C:\Users\pablo\OneDrive\Github\3C'
+source_folder = os.path.join(script_directory, "1")
+destination_base = script_directory
 num_copies = num_rows-1  # Change this to the number of copies you want to make
 
 for i in range(2, num_copies + 1):
     # Create a new folder name based on the iteration index
-    new_folder_name = f'copy_{i}'
+    new_folder_name = f'{i}'
     
     # Create the full path for the destination folder
     destination_folder = os.path.join(destination_base, new_folder_name)
@@ -38,7 +40,7 @@ for i in range(2, num_copies + 1):
     
     # Rename a file within the copied folder (e.g., rename 'file.txt' to 'new_file.txt')
     file_to_rename = os.path.join(destination_folder, '1.html')
-    new_file_name = f'new_file_{i}.html'
+    new_file_name = f'{i}.html'
     os.rename(file_to_rename, os.path.join(destination_folder, new_file_name))
     
     print(f'Copy {i} completed.')

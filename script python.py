@@ -1,7 +1,10 @@
 import os
 
 # Ruta de la carpeta que contiene las carpetas de archivos HTML a editar
-ruta_carpeta_principal = "C:\Users\pablo\OneDrive\Github\3C"
+
+
+
+ruta_carpeta_principal = os.path.dirname(os.path.abspath(__file__))
 
 # Iterar sobre las carpetas en la ruta principal
 for nombre_carpeta in os.listdir(ruta_carpeta_principal):
@@ -20,7 +23,7 @@ for nombre_carpeta in os.listdir(ruta_carpeta_principal):
 
                 estudiante = nombre_archivo_sin_extension
                 
-                lineas[linea_a_editar1-1] = lineas[linea_a_editar1-1].replace("estudiante", estudiante)
+                lineas[linea_a_editar1-1] = lineas[linea_a_editar1-1].replace("1", estudiante)
                 
                 with open(ruta_archivo, "w") as archivo:
                     archivo.writelines(lineas)
