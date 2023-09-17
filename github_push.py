@@ -12,7 +12,7 @@ commit_message = 'Tu mensaje de commit aquí'
 branch_name = 'main'
 
 # Token de autenticación de GitHub (necesario para realizar el push)
-github_token = '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'
+github_token = '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'
 
 # Nombre de usuario de GitHub
 github_username = 'Asintota'
