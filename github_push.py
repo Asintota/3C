@@ -48,7 +48,7 @@ try:
     branch = repo_github.get_branch(branch_name)
 
     # Sube los cambios al repositorio remoto en la rama especificada
-    repo.git.push(remote_repo_url, branch_name)
+    repo.git.push('origin', branch_name)
 
     print(f'Commit y push exitosos en la rama {branch_name} de {github_repo_name}.')
 
