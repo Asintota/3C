@@ -23,29 +23,34 @@ github_repo_name = '3C'
 # Ruta al archivo remoto del repositorio en GitHub
 remote_repo_url = f'https://github.com/{github_username}/{github_repo_name}.git'
 
+print(remote_repo_url)
+
+try:
 # Cambia al directorio del repositorio local
-os.chdir(repo_dir)
+    os.chdir(repo_dir)
 
-# Inicializa el repositorio Git
-repo = git.Repo(repo_dir)
+    # Inicializa el repositorio Git
+    repo = git.Repo(repo_dir)
 
-# Agrega todos los cambios al área de preparación
-repo.git.add('--all')
+    # Agrega todos los cambios al área de preparación
+    repo.git.add('--all')
 
-# Realiza el commit
-repo.git.commit('-m', commit_message)
+    # Realiza el commit
+    repo.git.commit('-m', commit_message)
 
-# Conecta con GitHub usando tu token
-g = Github(github_token)
+    # Conecta con GitHub usando tu token
+    g = Github(github_token)
 
-# Obtiene el repositorio remoto en GitHub
-repo_github = g.get_repo(f'{github_username}/{github_repo_name}')
+    # Obtiene el repositorio remoto en GitHub
+    repo_github = g.get_repo(f'{github_username}/{github_repo_name}')
 
-# Obtiene la rama específica en la que deseas hacer el push
-branch = repo_github.get_branch(branch_name)
+    # Obtiene la rama específica en la que deseas hacer el push
+    branch = repo_github.get_branch(branch_name)
 
-# Sube los cambios al repositorio remoto en la rama especificada
-repo.git.push(remote_repo_url, branch_name)
+    # Sube los cambios al repositorio remoto en la rama especificada
+    repo.git.push(remote_repo_url, branch_name)
 
-print(f'Commit y push exitosos en la rama {branch_name} de {github_repo_name}.')
+    print(f'Commit y push exitosos en la rama {branch_name} de {github_repo_name}.')
 
+except Exception as e:
+    print(f"An error occurred: {e}")
