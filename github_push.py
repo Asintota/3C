@@ -9,7 +9,7 @@ repo_dir = os.path.dirname(os.path.abspath(__file__))
 commit_message = 'Tu mensaje de commit aquí'
 
 # Nombre de la rama en la que deseas hacer el commit y el push
-branch_name = 'main'
+
 
 # Token de autenticación de GitHub (necesario para realizar el push)
 github_token = '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'
@@ -31,7 +31,7 @@ try:
 
     # Inicializa el repositorio Git
     repo = git.Repo(repo_dir)
-
+    branch_name = repo.active_branch.name
     # Agrega todos los cambios al área de preparación
     repo.git.add('--all')
 
