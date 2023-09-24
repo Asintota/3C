@@ -1,27 +1,27 @@
 Alumnos,Astronauta,Senador,Mago,Ninja
-Rodrigo Abal,0,0,0,100
-Diego Barreiro,0,0,0,100
-Brais Bastón,0,0,0,100
-Sara Carballeira,0,0,0,100
-Miguel Casas,0,0,0,100
-Juan David Cifuentes,0,0,0,100
-Daniel Clemente,0,0,0,100
-Sara Dacuña,0,0,0,100
-Lara Fernández,0,0,0,100
-Carla Fontenla,0,0,0,100
-Mateo Fuentes,0,0,0,0
-Martín González,0,0,0,100
-María González,0,0,0,100
-Pablo Lago,0,0,0,100
-Javier Lois,0,0,0,0
-Lucas Martínez,0,0,0,100
-Pedro Pablo Martínez,0,0,0,0
-Jimena Orellana,0,0,0,100
-Daniela Penido,0,0,0,100
-Noa Pinero,0,0,0,100
-Diego Ríos,0,0,0,100
-Pablo Rivas,0,0,0,100
-Sabela Rodríguez,0,0,0,0
-Eduardo Sánchez,0,0,0,100
-Matilda Sariego,0,0,0,100
-Icía Sobral,0,0,0,100
+Rodrigo Abal,0,0.0,0,50
+Diego Barreiro,0,0.0,0,100
+Brais Bastón,0,100.0,100,100
+Sara Carballeira,100,100.0,100,100
+Miguel Casas,0,0.0,0,100
+Juan David Cifuentes,0,0.0,0,100
+Daniel Clemente,0,0.0,100,100
+Sara Dacuña,100,0.0,100,100
+Lara Fernández,0,100.0,100,100
+Carla Fontenla,0,100.0,100,100
+Mateo Fuentes,0,0.0,0,50
+Martín González,0,0.0,0,50
+María González,0,0.0,100,100
+Pablo Lago,0,0.0,0,100
+Javier Lois,0,0.0,100,0
+Lucas Martínez,100,100.0,100,100
+Pedro Pablo Martínez,100,100.0,100,50
+Jimena Orellana,0,0.0,100,100
+Daniela Penido,100,100.0,100,100
+Noa Pinero,0,100.0,100,100
+Diego Ríos,0,0.0,100,50
+Pablo Rivas,100,100.0,100,100
+Sabela Rodríguez,100,100.0,100,50
+Eduardo Sánchez,100,100.0,100,100
+Matilda Sariego,100,0.0,100,50
+Icía Sobral,0,0.0,0,50
