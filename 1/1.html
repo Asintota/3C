@@ -135,54 +135,34 @@ $(document).ready(function() {
       const currentDate = new Date();
       console.log('val1', val1[estudiante]);  
       // Store in variables.txt the 8 level badge status
-      const fs = require('fs');
-	// Specify the file path
       const filePath = '../temp/variables.txt';	
-// Read the contents of the text file
-      fs.readFile(filePath, 'utf8', (err, data) => {
-      if (err) {
-        console.error('Error reading file:', err);
-      } else {
-        // Store the file contents in a variable
-		const blockBadge = data;
-        console.log('File contents:', blockBadge);
-      }
-      }); 
-	  
+      fetch(filePath)
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          return response.text(); // Parse response as text
+      })
+      .then(data => {
+          // Handle the file contents here
+          const blockBadge = data;
+          console.log('File contents:', blockBadge);
+      })
+      .catch(error => {
+        console.error('Error fetching the file:', error);
+      });
+
+	
+      
+  
       if ((currentDate.toDateString() === segundoTrimestre.toDateString() || currentDate.toDateString() === segundoTrimestre.toDateString() || currentDate.toDateString() === terceraEvaluacion.toDateString()) && val1[estudiante] >= 80) {
-		fs.truncate(filePath, 0, (err) => {
-			if (err) {
-				console.error('Error truncating file:', err);
-			} else {
-				console.log('File truncated successfully.');
-			}
-		});
-		// Write to a text file
-		fs.writeFile(filePath, "true", (err) => {
-		if (err) {
-			console.error('Error writing to file:', err);
-		} else {
-			console.log('File written successfully.');
-		}
-		});
+
+        
+        
 	}
 
       if ((currentDate.toDateString() === segundoTrimestre.toDateString()) || (currentDate.toDateString() === tercerTrimestre.toDateString())) {
-		fs.truncate(filePath, 0, (err) => {
-			if (err) {
-				console.error('Error truncating file:', err);
-			} else {
-				console.log('File truncated successfully.');
-			}
-		});
-		// Write to a text file
-		fs.writeFile('../temp/variables.txt', "false", (err) => {
-		if (err) {
-			console.error('Error writing to file:', err);
-		} else {
-			console.log('File written successfully.');
-		}
-		});
+		
 	  }
 
 
