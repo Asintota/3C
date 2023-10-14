@@ -137,6 +137,7 @@ $(document).ready(function() {
       // Store in variables.txt the 8 level badge status
       const filePath = '../temp/variables.txt';	
       fetch(filePath)
+      const blockBadge = false;
       .then(response => {
           if (!response.ok) {
               throw new Error('Network response was not ok');
@@ -208,7 +209,7 @@ $(document).ready(function() {
       const rowNumber = estudiante; //la primera fila son los encabezados
       const csvDocs = ["../csv/Astronauta.csv","../csv/Senador.csv","../csv/Mago.csv","../csv/Ninja.csv"];
       const consecutiveOnes = 3;
-
+      
       for (let i = 0; i < csvDocs.length; i++) {
         // console.log(i);
         // fetch(csvDocs[i])
