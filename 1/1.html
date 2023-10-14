@@ -136,8 +136,8 @@ $(document).ready(function() {
       console.log('val1', val1[estudiante]);  
       // Store in variables.txt the 8 level badge status
       const filePath = '../temp/variables.txt';	
-      fetch(filePath)
       const blockBadge = false;
+      fetch(filePath)
       .then(response => {
           if (!response.ok) {
               throw new Error('Network response was not ok');
