@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 from git import Repo
+import time
 
 ############################
 # Excel to csv
@@ -87,3 +88,5 @@ def git_push():
         print('Some error occured while pushing the code')    
 
 git_push()
+
+time.sleep(5)
