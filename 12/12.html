@@ -135,83 +135,99 @@ $(document).ready(function() {
       const currentDate = new Date();
       console.log('val1', val1[estudiante]);  
       // Store in variables.txt the 8 level badge status
-      const fs = require('fs');
-	// Specify the file path
       const filePath = '../temp/variables.txt';	
-// Read the contents of the text file
-      fs.readFile(filePath, 'utf8', (err, data) => {
-      if (err) {
-        console.error('Error reading file:', err);
-      } else {
-        // Store the file contents in a variable
-		const blockBadge = data;
-        console.log('File contents:', blockBadge);
-      }
-      }); 
-	  
-      if ((currentDate.toDateString() === segundoTrimestre.toDateString() || currentDate.toDateString() === segundoTrimestre.toDateString() || currentDate.toDateString() === terceraEvaluacion.toDateString()) && val1[estudiante] >= 80) {
-		fs.truncate(filePath, 0, (err) => {
-			if (err) {
-				console.error('Error truncating file:', err);
-			} else {
-				console.log('File truncated successfully.');
-			}
-		});
-		// Write to a text file
-		fs.writeFile(filePath, "true", (err) => {
-		if (err) {
-			console.error('Error writing to file:', err);
-		} else {
-			console.log('File written successfully.');
-		}
-		});
-	}
+      const blockBadge = false;
+      fetch(filePath)
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          return response.text(); // Parse response as text
+      })
+      .then(data => {
+          // Handle the file contents here
+          const blockBadge = data;
+          console.log('File contents:', blockBadge);
+      })
+      .catch(error => {
+        console.error('Error fetching the file:', error);
+      });
 
-      if ((currentDate.toDateString() === segundoTrimestre.toDateString()) || (currentDate.toDateString() === tercerTrimestre.toDateString())) {
-		fs.truncate(filePath, 0, (err) => {
-			if (err) {
-				console.error('Error truncating file:', err);
-			} else {
-				console.log('File truncated successfully.');
-			}
-		});
-		// Write to a text file
-		fs.writeFile('../temp/variables.txt', "false", (err) => {
-		if (err) {
-			console.error('Error writing to file:', err);
-		} else {
-			console.log('File written successfully.');
-		}
-		});
-	  }
+	
+      
 
-
-      if (blockBadge) {
+        if (currentDate >= primeraEvaluacion && currentDate <= segundoTrimestre && val1[estudiante] >= 80) {
           mountain.style.filter = 'none'; // Remove grayscale
           mountain.style.opacity = '1'; // Set full opacity
           mountain.title = 'Enhorabuena! Has conseguido el nivel 8 de Astronauta!';
-      }
-      if (currentDate.toDateString() === segundoTrimestre && blockBadge) {
-          blockBadge = false;
+        } else if (currentDate >= segundaEvaluacion && currentDate <= tercerTrimestre && val1[estudiante] >= 80){
+          mountain.style.filter = 'none'; // Remove grayscale
+          mountain.style.opacity = '1'; // Set full opacity
+          mountain.title = 'Enhorabuena! Has conseguido el nivel 8 de Astronauta!';
+        } else if (currentDate >= terceraEvaluacion && val1[estudiante] >= 80){
+          mountain.style.filter = 'none'; // Remove grayscale
+          mountain.style.opacity = '1'; // Set full opacity
+          mountain.title = 'Enhorabuena! Has conseguido el nivel 8 de Astronauta!';
+        }else{
           mountain.style.filter = 'grayscale(100%)';           
           mountain.style.opacity = '0.25'; // 
           mountain.title = '"Se desbloquea al terminar el trimestre con nivel superior a 8"';
-      }
-      if (currentDate.toDateString() === specificDate.toDateString() && val2[estudiante] >= 80) {
+        }
+
+        if (currentDate >= primeraEvaluacion && currentDate <= segundoTrimestre && val2[estudiante] >= 80) {
           king.style.filter = 'none'; // Remove grayscale
           king.style.opacity = '1'; // Set full opacity
           king.title = 'Enhorabuena! Has conseguido el nivel 8 de Senador!';
-      } 
-      if (currentDate.toDateString() === specificDate.toDateString() && val3[estudiante] >= 80) {
+        } else if (currentDate >= segundaEvaluacion && currentDate <= tercerTrimestre && val2[estudiante] >= 80){
+          king.style.filter = 'none'; // Remove grayscale
+          king.style.opacity = '1'; // Set full opacity
+          king.title = 'Enhorabuena! Has conseguido el nivel 8 de Senador!';
+        } else if (currentDate >= terceraEvaluacion && val2[estudiante] >= 80){
+          king.style.filter = 'none'; // Remove grayscale
+          king.style.opacity = '1'; // Set full opacity
+          king.title = 'Enhorabuena! Has conseguido el nivel 8 de Senador!';
+        }else{
+          king.style.filter = 'grayscale(100%)';           
+          king.style.opacity = '0.25'; // 
+          king.title = '"Se desbloquea al terminar el trimestre con nivel superior a 8"';
+        }
+
+        if (currentDate >= primeraEvaluacion && currentDate <= segundoTrimestre && val3[estudiante] >= 80) {
           thunder.style.filter = 'none'; // Remove grayscale
           thunder.style.opacity = '1'; // Set full opacity
           thunder.title = 'Enhorabuena! Has conseguido el nivel 8 de Mago!';
-      } 
-      if (currentDate.toDateString() === specificDate.toDateString() && val3[estudiante] >= 80) {
+        } else if (currentDate >= segundaEvaluacion && currentDate <= tercerTrimestre && val3[estudiante] >= 80){
+          thunder.style.filter = 'none'; // Remove grayscale
+          thunder.style.opacity = '1'; // Set full opacity
+          thunder.title = 'Enhorabuena! Has conseguido el nivel 8 de Mago!';
+        } else if (currentDate >= terceraEvaluacion && val3[estudiante] >= 80){
+          thunder.style.filter = 'none'; // Remove grayscale
+          thunder.style.opacity = '1'; // Set full opacity
+          thunder.title = 'Enhorabuena! Has conseguido el nivel 8 de Mago!';
+        }else{
+          thunder.style.filter = 'grayscale(100%)';           
+          thunder.style.opacity = '0.25'; // 
+          thunder.title = '"Se desbloquea al terminar el trimestre con nivel superior a 8"';
+        }
+
+        if (currentDate >= primeraEvaluacion && currentDate <= segundoTrimestre && val4[estudiante] >= 80) {
           viking.style.filter = 'none'; // Remove grayscale
           viking.style.opacity = '1'; // Set full opacity
-          viking.title = 'Enhorabuena! Has conseguido el nivel 8 de Ninja!';
-      } 
+          viking.title = 'Enhorabuena! Has conseguido el nivel 8 de Ninja!';    
+        } else if (currentDate >= segundaEvaluacion && currentDate <= tercerTrimestre && val4[estudiante] >= 80){
+          viking.style.filter = 'none'; // Remove grayscale
+          viking.style.opacity = '1'; // Set full opacity
+          viking.title = 'Enhorabuena! Has conseguido el nivel 8 de Ninja!';    
+        } else if (currentDate >= terceraEvaluacion && val4[estudiante] >= 80){
+          viking.style.filter = 'none'; // Remove grayscale
+          viking.style.opacity = '1'; // Set full opacity
+          viking.title = 'Enhorabuena! Has conseguido el nivel 8 de Ninja!';    
+        }else{
+          viking.style.filter = 'grayscale(100%)';           
+          viking.style.opacity = '0.25'; // 
+          viking.title = '"Se desbloquea al terminar el trimestre con nivel superior a 8"';
+        }
+
 
 
       // Rachas logros
@@ -228,7 +244,7 @@ $(document).ready(function() {
       const rowNumber = estudiante; //la primera fila son los encabezados
       const csvDocs = ["../csv/Astronauta.csv","../csv/Senador.csv","../csv/Mago.csv","../csv/Ninja.csv"];
       const consecutiveOnes = 3;
-
+      
       for (let i = 0; i < csvDocs.length; i++) {
         // console.log(i);
         // fetch(csvDocs[i])
