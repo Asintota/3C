@@ -280,7 +280,7 @@ $(document).ready(function() {
                   let consecutiveCount = 0;
                   for (let j = 1; j<celdas.length; j++) { //starts at 1 because first column is a string
                     console.log("cell value: ", celdas[j]);
-                    if (celdas[j] === '1') {
+                    if (celdas[j] === '1' || celdas[j] === '1.0') {
                       consecutiveCount++;
                       if (consecutiveCount === consecutiveOnes) {
                           console.log(`Found ${consecutiveOnes} consecutive "1" values in column ${j}`);
