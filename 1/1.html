@@ -285,6 +285,7 @@ $(document).ready(function() {
                     console.log("cell value: ", celdas[j]);
                     if (celdas[j] === '0' || celdas[j] === '0.0') {
                         negativesCount++;
+                        console.log("Count +1 negative")
                     }
                     if (celdas[j] === '1' || celdas[j] === '1.0') {
                       consecutiveCount++;
@@ -333,8 +334,8 @@ $(document).ready(function() {
           }
       }
       console.log("Minimum streak: " + minStreak);
-      console.log("Minimum streak: " + negativesCount);
-      console.log("Minimum streak: " + positivesCount);
+      console.log("negatives count: " + negativesCount);
+      console.log("positives count: " + positivesCount);
       document.getElementById("streakText").textContent = minStreak;
       document.getElementById("negativesText").textContent = negativesCount;
       document.getElementById("positivesText").textContent = positivesCount;
