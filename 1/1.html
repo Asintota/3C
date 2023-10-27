@@ -113,7 +113,7 @@ $(document).ready(function() {
     
   });
     
-  function toggleBadges() {
+  function toggleBadges(streak,negativesCount,positivesCount) {
       console.log('im here');
   // Badges change opacity (activation)
       const mountain = document.getElementById('mountain');
@@ -244,9 +244,7 @@ $(document).ready(function() {
       const rowNumber = estudiante; //la primera fila son los encabezados
       const csvDocs = ["../csv/Astronauta.csv","../csv/Senador.csv","../csv/Mago.csv","../csv/Ninja.csv"];
       const consecutiveOnes = 3;
-      var streak = new Array(4).fill(0);
-      var negativesCount = 0;
-      var positivesCount = 0;
+
       for (let i = 0; i < csvDocs.length; i++) {
         // console.log(i);
         // fetch(csvDocs[i])
@@ -326,19 +324,7 @@ $(document).ready(function() {
               
 
               });  
-      var minStreak = streak[0];
-      for (var k = 1; i < streak.length; k++) {
-          if (streak[k] < minStreak) {
-          minStreak = streak[k]; 
-          }
-      }
-      console.log("Minimum streak: " + minStreak);
-      console.log("negatives count: " + negativesCount);
-      console.log("positives count: " + positivesCount);
-      document.getElementById("streakText").textContent = minStreak;
-      document.getElementById("negativesText").textContent = negativesCount;
-      document.getElementById("positivesText").textContent = positivesCount;
-
+      
                
       }
     }
@@ -379,8 +365,26 @@ $(document).ready(function() {
     }
     // Call the toggleImages function when the window loads
     window.onload = toggleImages;
-    window.onload = toggleBadges;
+    
+    
+    var streak = new Array(4).fill(0);
+    var negativesCount = 0;
+    var positivesCount = 0;
+    window.onload = toggleBadges(streak,negativesCount,positivesCount);
   
+    var minStreak = streak[0];
+      for (var k = 1; i < streak.length; k++) {
+          if (streak[k] < minStreak) {
+          minStreak = streak[k]; 
+          }
+      }
+      console.log("Minimum streak: " + minStreak);
+      console.log("negatives count: " + negativesCount);
+      console.log("positives count: " + positivesCount);
+      document.getElementById("streakText").textContent = minStreak;
+      document.getElementById("negativesText").textContent = negativesCount;
+      document.getElementById("positivesText").textContent = positivesCount;
+
    
 });
   
