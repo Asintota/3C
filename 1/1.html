@@ -285,11 +285,12 @@ $(document).ready(function() {
                     console.log("cell value: ", celdas[j]);
                     if (celdas[j] === '0' || celdas[j] === '0.0') {
                         negativesCount++;
-                        //console.log("Count +1 negative")
+                        console.log("Count +1 negative");
                     }
                     if (celdas[j] === '1' || celdas[j] === '1.0') {
                       consecutiveCount++;
                       positivesCount++;
+                      console.log("Count +1 positive");
                       if (consecutiveCount === consecutiveOnes) {
                           console.log(`Found ${consecutiveOnes} consecutive "1" values in column ${j}`);
                           badges[i].style.filter = 'none'; // Remove grayscale
@@ -407,14 +408,15 @@ $(document).ready(function() {
       <img class="icon" id="streak" src="../icons/streak.svg" width="75">
       <span class="iconText" id="streakText"></span>
     </div>
+    <div class="positives" title="Número total de positivos">
+      <img class="icon" id="positives" src="../icons/positives.svg" width="75">
+      <span class="iconText" id="positivesText"></span>
+    </div>
     <div class="negatives" title="Número total de negativos">
       <img class="icon" id="negatives" src="../icons/negatives.svg" width="75">
       <span class="iconText" id="negativesText"></span>
     </div>    
-    <div class="positives" title="Número total de positivos">
-      <img class="icon" id="positives" src="../icons/positives.svg" width="75">
-      <span class="iconText" id="positivesText"></span>
-    </div>   
+   
   </div>
 
   <div class="container">
