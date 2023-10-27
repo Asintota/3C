@@ -245,6 +245,8 @@ $(document).ready(function() {
       const csvDocs = ["../csv/Astronauta.csv","../csv/Senador.csv","../csv/Mago.csv","../csv/Ninja.csv"];
       const consecutiveOnes = 3;
       var streak = new Array(4).fill(0);
+      const negativesCount = 0;
+      const positivesCount = 0;
       for (let i = 0; i < csvDocs.length; i++) {
         // console.log(i);
         // fetch(csvDocs[i])
@@ -278,10 +280,15 @@ $(document).ready(function() {
               const celdas = fila.split(',');
         //      console.log(celdas);
                   let consecutiveCount = 0;
+                  
                   for (let j = 1; j<celdas.length; j++) { //starts at 1 because first column is a string
                     console.log("cell value: ", celdas[j]);
+                    if (celdas[j] === '0' || celdas[j] === '0.0') {
+                        negativesCount++;
+                    }
                     if (celdas[j] === '1' || celdas[j] === '1.0') {
                       consecutiveCount++;
+                      positivesCount++;
                       if (consecutiveCount === consecutiveOnes) {
                           console.log(`Found ${consecutiveOnes} consecutive "1" values in column ${j}`);
                           badges[i].style.filter = 'none'; // Remove grayscale
@@ -314,8 +321,7 @@ $(document).ready(function() {
                       }
                       }
                     }
-                     // for total negatives count 
-                
+              
 
               });  
                
@@ -328,6 +334,8 @@ $(document).ready(function() {
       }
       console.log("Minimum streak: " + minStreak);
       document.getElementById("streakText").textContent = minStreak;
+      document.getElementById("negativesText").textContent = negativesCount;
+      document.getElementById("positivesText").textContent = positivesCount;
     }
 
 
