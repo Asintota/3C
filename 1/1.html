@@ -333,6 +333,8 @@ $(document).ready(function() {
           }
       }
       console.log("Minimum streak: " + minStreak);
+      console.log("Minimum streak: " + negativesCount);
+      console.log("Minimum streak: " + positivesCount);
       document.getElementById("streakText").textContent = minStreak;
       document.getElementById("negativesText").textContent = negativesCount;
       document.getElementById("positivesText").textContent = positivesCount;
@@ -408,7 +410,10 @@ $(document).ready(function() {
       <img class="icon" id="negatives" src="../icons/negatives.svg" width="75">
       <span class="iconText" id="negativesText"></span>
     </div>    
-    
+    <div class="positives" title="Número total de positivos">
+      <img class="icon" id="positives" src="../icons/negatives.svg" width="75">
+      <span class="iconText" id="positivesText"></span>
+    </div>   
   </div>
 
   <div class="container">
