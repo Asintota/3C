@@ -34,6 +34,7 @@ body {
 .iconText {
   color: white; /* Text color */
   font-weight: bold; /* Bold font */
+  font-size: 48px;
 }   
 
 .container {
