@@ -317,13 +317,14 @@ $(document).ready(function() {
               });  
                
       }
-      var min = streak[0];
+      var minStreak = streak[0];
       for (var i = 1; i < numbers.length; i++) {
-          if (streak[i] < min) {
-          min = streak[i]; 
+          if (streak[i] < minStreak) {
+          minStreak = streak[i]; 
           }
       }
-      console.log("Minimum streak: " + min);
+      console.log("Minimum streak: " + minStreak);
+      document.getElementById("streakText").textContent = minStreak;
     }
 
 
