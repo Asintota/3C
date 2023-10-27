@@ -326,8 +326,6 @@ $(document).ready(function() {
               
 
               });  
-               
-      }
       var minStreak = streak[0];
       for (var i = 1; i < streak.length; i++) {
           if (streak[i] < minStreak) {
@@ -340,6 +338,9 @@ $(document).ready(function() {
       document.getElementById("streakText").textContent = minStreak;
       document.getElementById("negativesText").textContent = negativesCount;
       document.getElementById("positivesText").textContent = positivesCount;
+
+               
+      }
     }
 
 
