@@ -244,7 +244,7 @@ $(document).ready(function() {
       const rowNumber = estudiante; //la primera fila son los encabezados
       const csvDocs = ["../csv/Astronauta.csv","../csv/Senador.csv","../csv/Mago.csv","../csv/Ninja.csv"];
       const consecutiveOnes = 3;
-      
+      var streak = new Array(4).fill(0);
       for (let i = 0; i < csvDocs.length; i++) {
         // console.log(i);
         // fetch(csvDocs[i])
@@ -294,9 +294,36 @@ $(document).ready(function() {
                     consecutiveCount = 0; // Reset the count if a non-"1" value is encountered
                   }
                 }
+
+
+                // for streak count
+                let lastIndex = celdas.length - 1;
+                while (lastIndex >= 0 && celdas[lastIndex].trim() === '') {
+                   lastIndex--;
+                }
+                if (lastIndex >= 0 && (celdas[lastIndex] === '1' || celdas[lastIndex] === '1.0')) {
+                      // The last value is '1', count consecutive '1's going backward
+                      let streakCount = 1;
+                      for (let j = lastIndex - 1; j >= 0; j--) {
+                          if (celdas[j] === '1' || celdas[j] === '1.0') {
+                              streakCount++;
+                      } else {
+                          // Encountered a non-'1' value, stop counting
+                          streak[i] = streakCount;
+                          break;
+                      }
+                      }
+                    }
               });  
                
       }
+      var min = streak[0];
+      for (var i = 1; i < numbers.length; i++) {
+          if (streak[i] < min) {
+          min = streak[i]; 
+          }
+      }
+      console.log("Minimum streak: " + min);
     }
 
 
