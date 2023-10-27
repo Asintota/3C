@@ -285,12 +285,12 @@ $(document).ready(function() {
                     console.log("cell value: ", celdas[j]);
                     if (celdas[j] === '0' || celdas[j] === '0.0') {
                         negativesCount++;
-                        console.log("Count +1 negative");
+                        console.log("Count +1 negative:"+ negativesCount);
                     }
                     if (celdas[j] === '1' || celdas[j] === '1.0') {
                       consecutiveCount++;
                       positivesCount++;
-                      console.log("Count +1 positive");
+                      console.log("Count +1 positive:"+ positivesCount);
                       if (consecutiveCount === consecutiveOnes) {
                           console.log(`Found ${consecutiveOnes} consecutive "1" values in column ${j}`);
                           badges[i].style.filter = 'none'; // Remove grayscale
