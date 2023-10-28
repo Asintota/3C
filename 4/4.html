@@ -380,7 +380,11 @@ $(document).ready(function() {
 
                   console.log(dateNumberArray);
                   console.log(`Consecutive "1" values from the last date: ${consecutiveCount2}`);
-                  document.getElementById("streakText").textContent = consecutiveCount2+" días";
+                  if (consecutiveCount2 == 1){
+                    document.getElementById("streakText").textContent = consecutiveCount2+" día";
+                  }else{
+                    document.getElementById("streakText").textContent = consecutiveCount2+" días";
+                  }
 
      
 
