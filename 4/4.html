@@ -113,8 +113,8 @@ $(document).ready(function() {
     
   });
     
-  function toggleBadges(streak,negativesCount,positivesCount) {
-      console.log('im here');
+  function toggleBadges() {
+     // console.log('im here');
   // Badges change opacity (activation)
       const mountain = document.getElementById('mountain');
       const king = document.getElementById('king');
@@ -292,8 +292,10 @@ $(document).ready(function() {
                     if (date && number) {
                       if (!dateNumberPairs[date]) {
                         dateNumberPairs[date] = [];
+                        console.log("im here")
                       }
                       dateNumberPairs[date].push(Number(number)); // Convert to a number
+                      console.log("im here 2")
                     }
 
                     if (celdas[j] === '0' || celdas[j] === '0.0') {
