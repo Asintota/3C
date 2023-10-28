@@ -281,12 +281,12 @@ $(document).ready(function() {
               const header = filas[0].split(',');
               const celdas = fila.split(',');
         //      console.log(celdas);
-                  let consecutiveCount = 0;
+                  
                   
                   for (let j = 1; j<celdas.length; j++) { //starts at 1 because first column is a string
                     const date = header[j].trim(); 
                     const number = celdas[j].trim();
-                    //console.log("cell value: ", celdas[j]);
+                    console.log("cell value: ", celdas[j]);
 
                     // Add date-number pair to the object
                     if (date && number) {
@@ -299,14 +299,25 @@ $(document).ready(function() {
                     if (celdas[j] === '0' || celdas[j] === '0.0') {
                         negativesCount++;
                         console.log("Count +1 negative:"+ negativesCount);
-                        
-      
                     }
                     document.getElementById("negativesText").textContent = negativesCount;
+
+                    if (celdas[j] === '1' || celdas[j] === '1.0') {
+                        positivesCount++;
+                        console.log("Count +1 positive:"+ positivesCount);
+                    }
+                    document.getElementById("positivesText").textContent = positivesCount;
+                  }
+
+                  let consecutiveCount = 0;
+                  for (let j = 1; j<celdas.length; j++) { //starts at 1 because first column is a string
+                    const date = header[j].trim(); 
+                    const number = celdas[j].trim();
+                    //console.log("cell value: ", celdas[j]);
+
                     if (celdas[j] === '1' || celdas[j] === '1.0') {
                       consecutiveCount++;
-                      positivesCount++;
-                      console.log("Count +1 positive:"+ positivesCount);
+
                       if (consecutiveCount === consecutiveOnes) {
                           //console.log(`Found ${consecutiveOnes} consecutive "1" values in column ${j}`);
                           badges[i].style.filter = 'none'; // Remove grayscale
@@ -317,16 +328,13 @@ $(document).ready(function() {
                     } else {
                     //console.log(`Not Found  consecutive "1"`);
                     consecutiveCount = 0; // Reset the count if a non-"1" value is encountered
-                  }
-                  document.getElementById("positivesText").textContent = positivesCount;
+                    }
                 }
 
 
-                // for the streak 
-                
+     
 
-              
-
+      
               });  
               
     
@@ -498,7 +506,7 @@ $(document).ready(function() {
           
           <div class="box">
             <h2 class="text">Senador</h2>
-            <img id="senador1" src="../roles/senator/senator1.svg" width="125">
+            <img id="senador1" src="../roles/senator/senator1.svg" width="100">
             <!-- <img id="astronaut2" src="../roles/astronaut/Astronaut2.svg"> -->
             <h2 class="text">Nivel</h2>
             <div class="percent">
