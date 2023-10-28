@@ -335,8 +335,19 @@ $(document).ready(function() {
 
                   // Step 3: Convert the object to an array of date-number pairs
                   const dateNumberArray = Object.entries(dateNumberPairs);
-                  // Step 4: Sort the array by dates
-                  dateNumberArray.sort((a, b) => new Date(a[0]) - new Date(b[0]));        
+                  // Step 4: Sort the array by dates in descending order (most recent first)
+                  dateNumberArray.sort((a, b) => {
+                    const dateA = new Date(a[0]);
+                    const dateB = new Date(b[0]);
+
+                    if (dateA < dateB) {
+                      return 1; // Swap positions for descending order
+                    }
+                    if (dateA > dateB) {
+                      return -1; // Swap positions for descending order
+                    }
+                    return 0;
+                  });       
                   
                   // Step 5: Find consecutive "1" values from the last date
                   let consecutiveCount2 = 0;
