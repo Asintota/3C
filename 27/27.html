@@ -313,7 +313,11 @@ $(document).ready(function() {
                         console.log("Count +1 positive:"+ positivesCount);
                     }
                     document.getElementById("positivesText").textContent = positivesCount;
-                    document.getElementById("coinsText").textContent = coins;
+                    if (coins < 0){
+                      document.getElementById("coinsText").textContent = 0;
+                    }else{
+                      document.getElementById("coinsText").textContent = coins;
+                    }
                   }
 
                   let consecutiveCount = 0;
