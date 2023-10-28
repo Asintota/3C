@@ -334,7 +334,7 @@ $(document).ready(function() {
                 }
 
                   // Step 3: Convert the object to an array of date-number pairs
-                  const dateNumberArray = Object.entries(dateNumberPairs);
+                  let dateNumberArray = Object.entries(dateNumberPairs);
                   // Step 4: Sort the array by dates in descending order (most recent first)
                   dateNumberArray.sort((a, b) => {
                     const dateA = new Date(a[0]);
