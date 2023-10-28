@@ -244,7 +244,9 @@ $(document).ready(function() {
       const rowNumber = estudiante; //la primera fila son los encabezados
       const csvDocs = ["../csv/Astronauta.csv","../csv/Senador.csv","../csv/Mago.csv","../csv/Ninja.csv"];
       const consecutiveOnes = 3;
-      const dateNumberPairs = {};
+      var dateNumberPairs = {};
+      var negativesCount=0;
+      var positivesCount=0;
       for (let i = 0; i < csvDocs.length; i++) {
         // console.log(i);
         // fetch(csvDocs[i])
@@ -271,7 +273,7 @@ $(document).ready(function() {
         //   console.error("Error fetching CSV file:", error);
         // });
         
-        const dateNumberPairs = {}; 
+        
 
         $.get(csvDocs[i], function(data) {
               const filas = data.split(/\r?\n/);
@@ -430,11 +432,11 @@ $(document).ready(function() {
       <img class="icon" id="streak" src="../icons/streak.svg" width="75">
       <span class="iconText" id="streakText"></span>
     </div>
-    <div class="positives" title="Número total de positivos">
+    <div class="positives" title="Positivos">
       <img class="icon" id="positives" src="../icons/positives.svg" width="75">
       <span class="iconText" id="positivesText"></span>
     </div>
-    <div class="negatives" title="Número total de negativos">
+    <div class="negatives" title="Negativos">
       <img class="icon" id="negatives" src="../icons/negatives.svg" width="75">
       <span class="iconText" id="negativesText"></span>
     </div>    
