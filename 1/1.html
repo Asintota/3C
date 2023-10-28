@@ -113,8 +113,8 @@ $(document).ready(function() {
     
   });
     
-  function toggleBadges(streak,negativesCount,positivesCount) {
-      console.log('im here');
+  function toggleBadges() {
+     // console.log('im here');
   // Badges change opacity (activation)
       const mountain = document.getElementById('mountain');
       const king = document.getElementById('king');
@@ -247,6 +247,7 @@ $(document).ready(function() {
       var dateNumberPairs = {};
       var negativesCount=0;
       var positivesCount=0;
+      var coins =0;
       for (let i = 0; i < csvDocs.length; i++) {
         // console.log(i);
         // fetch(csvDocs[i])
@@ -281,31 +282,49 @@ $(document).ready(function() {
               const header = filas[0].split(',');
               const celdas = fila.split(',');
         //      console.log(celdas);
-                  let consecutiveCount = 0;
                   
+                  
+                  for (let j = 1; j<celdas.length; j++) { //starts at 1 because first column is a string
+                    const date = header[j].trim(); 
+                    const number = celdas[j].trim();
+                    console.log("cell value: ", celdas[j]);
+                    
+                    // Add date-number pair to the object
+                    if (date && number) {
+                      if (!dateNumberPairs[date]) {
+                        dateNumberPairs[date] = [];
+                        console.log("im here")
+                      }
+                      dateNumberPairs[date].push(Number(number)); // Convert to a number
+                      console.log("im here 2")
+                    }
+
+                    if (celdas[j] === '0' || celdas[j] === '0.0') {
+                        negativesCount++;
+                        coins = coins - 50;
+                        console.log("Count +1 negative:"+ negativesCount);
+                    }
+                    document.getElementById("negativesText").textContent = negativesCount;
+                    document.getElementById("coinsText").textContent = coins;
+
+                    if (celdas[j] === '1' || celdas[j] === '1.0') {
+                        positivesCount++;
+                        coins = coins + 50;
+                        console.log("Count +1 positive:"+ positivesCount);
+                    }
+                    document.getElementById("positivesText").textContent = positivesCount;
+                    document.getElementById("coinsText").textContent = coins;
+                  }
+
+                  let consecutiveCount = 0;
                   for (let j = 1; j<celdas.length; j++) { //starts at 1 because first column is a string
                     const date = header[j].trim(); 
                     const number = celdas[j].trim();
                     //console.log("cell value: ", celdas[j]);
 
-                    // Add date-number pair to the object
-                    if (date && number) {
-                      if (!dateNumberPairs[date]) {
-                        dateNumberPairs[date] = [];
-                      }
-                      dateNumberPairs[date].push(Number(number)); // Convert to a number
-                    }
-
-                    if (celdas[j] === '0' || celdas[j] === '0.0') {
-                        negativesCount++;
-                        console.log("Count +1 negative:"+ negativesCount);
-                    }
-                    document.getElementById("negativesText").textContent = negativesCount;
                     if (celdas[j] === '1' || celdas[j] === '1.0') {
                       consecutiveCount++;
-                      positivesCount++;
-                      console.log("Count +1 positive:"+ positivesCount);
-                      
+
                       if (consecutiveCount === consecutiveOnes) {
                           //console.log(`Found ${consecutiveOnes} consecutive "1" values in column ${j}`);
                           badges[i].style.filter = 'none'; // Remove grayscale
@@ -316,44 +335,65 @@ $(document).ready(function() {
                     } else {
                     //console.log(`Not Found  consecutive "1"`);
                     consecutiveCount = 0; // Reset the count if a non-"1" value is encountered
-                  }
-                  document.getElementById("positivesText").textContent = positivesCount;
+                    }
                 }
 
+                  // Step 3: Convert the object to an array of date-number pairs
+                  
+                  let dateNumberArray = Object.entries(dateNumberPairs);
+                  dateNumberArray = dateNumberArray.filter(([header]) => header !== "Resultados");
+                  // Remove elements that have the header "Resultados"
+                  
+                  // Step 4: Sort the array by dates in descending order (most recent first)
+                  dateNumberArray.sort((a, b) => {
+                    const dateA = new Date(a[0]);
+                    const dateB = new Date(b[0]);
 
-                // for the streak 
-                
+                    if (dateA < dateB) {
+                      return 1; // Swap positions for descending order
+                    }
+                    if (dateA > dateB) {
+                      return -1; // Swap positions for descending order
+                    }
+                    return 0;
+                  });       
+                  // Step 5: Remove elements that are not valid dates
+                  //dateNumberArray = dateNumberArray.filter(([date]) => !isNaN(date));
+                  // Step 5: Find consecutive days where all numbers are 1, starting from the most recent date
+                  
+                  let consecutiveCount2 = 0;
+                  let allOnesCount = 0;
 
-              
+                  for (let i = 0; i < dateNumberArray.length; i++) {
+                    const [date, numbers] = dateNumberArray[i];
 
+                    // Check if all numbers for the date are 1
+                    const isAllOnes = numbers.every(number => number === 1);
+
+                    if (isAllOnes) {
+                      consecutiveCount2++;
+                    } else {
+                      break; // Stop counting when a date is encountered with non-1 values
+                    }
+                  }
+
+
+                  console.log(dateNumberArray);
+                  console.log(`Consecutive "1" values from the last date: ${consecutiveCount2}`);
+                  if (consecutiveCount2 == 1){
+                    document.getElementById("streakText").textContent = consecutiveCount2+" día";
+                  }else{
+                    document.getElementById("streakText").textContent = consecutiveCount2+" días";
+                  }
+
+     
+
+      
               });  
               
     
                
       }
-      // Step 3: Convert the object to an array of date-number pairs
-      const dateNumberArray = Object.entries(dateNumberPairs);
-      // Step 4: Sort the array by dates
-      dateNumberArray.sort((a, b) => new Date(a[0]) - new Date(b[0]));        
-      
-      // Step 5: Find consecutive "1" values from the last date
-      let consecutiveCount = 0;
-      for (let i = dateNumberArray.length - 1; i >= 0; i--) {
-        const [date, numbers] = dateNumberArray[i];
-        
-        // Check for consecutive "1" values in the 'numbers' array
-        for (const number of numbers) {
-          if (number === 1) {
-            consecutiveCount++;
-          } else {
-            break; // Stop counting when a non-"1" value is encountered
-          }
-        }
-      }
-
-      console.log(dateNumberArray);
-      console.log(`Consecutive "1" values from the last date: ${consecutiveCount}`);
-      document.getElementById("streakText").textContent = positivesCount;
     
 
     }
@@ -442,7 +482,7 @@ $(document).ready(function() {
     <div class="monedas" title="Monedas">
       <img class="icon" id="coins" src="../icons/coins.svg" width="75">
       <span class="iconText" id="coinsText"></span>
-    </div>   
+    </div>
   </div>
 
   <div class="container">
@@ -499,7 +539,7 @@ $(document).ready(function() {
           
           <div class="box">
             <h2 class="text">Senador</h2>
-            <img id="senador1" src="../roles/senator/senator1.svg" width="150">
+            <img id="senador1" src="../roles/senator/senator1.svg" width="100">
             <!-- <img id="astronaut2" src="../roles/astronaut/Astronaut2.svg"> -->
             <h2 class="text">Nivel</h2>
             <div class="percent">

@@ -1,7 +1,7 @@
 import os
 import shutil
 import openpyxl
-
+import shutil
 # Specify the path to your Excel file
 script_directory = os.path.dirname(os.path.abspath(__file__))
 filename = "actitud.xlsx"
@@ -27,6 +27,33 @@ workbook.close()
 source_folder = os.path.join(script_directory, "1")
 destination_base = script_directory
 num_copies = num_rows-1  # Change this to the number of copies you want to make
+
+
+
+
+#remove folders 
+directory_path = script_directory
+
+# Get a list of subdirectories in the specified directory
+subdirectories = [d for d in os.listdir(directory_path) if os.path.isdir(os.path.join(directory_path, d))]
+
+# Iterate through the subdirectories
+for folder in subdirectories:
+    if folder.isdigit() and folder != "1":
+        folder_path = os.path.join(directory_path, folder)
+        print(f"Removing folder: {folder_path}")
+        shutil.rmtree(folder_path)
+
+print("Done")
+
+
+
+
+
+
+
+
+#create folders
 
 for i in range(2, num_copies + 1):
     # Create a new folder name based on the iteration index
