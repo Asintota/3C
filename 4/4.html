@@ -334,7 +334,10 @@ $(document).ready(function() {
                 }
 
                   // Step 3: Convert the object to an array of date-number pairs
+                  dateNumberArray = dateNumberArray.filter(([header]) => header !== "Resultados");
                   let dateNumberArray = Object.entries(dateNumberPairs);
+                  // Remove elements that have the header "Resultados"
+                  
                   // Step 4: Sort the array by dates in descending order (most recent first)
                   dateNumberArray.sort((a, b) => {
                     const dateA = new Date(a[0]);
@@ -351,6 +354,7 @@ $(document).ready(function() {
                   // Step 5: Remove elements that are not valid dates
                   //dateNumberArray = dateNumberArray.filter(([date]) => !isNaN(date));
                   // Step 5: Find consecutive days where all numbers are 1, starting from the most recent date
+                  
                   let consecutiveCount2 = 0;
                   let allOnesCount = 0;
 
