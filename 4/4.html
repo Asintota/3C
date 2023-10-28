@@ -333,6 +333,30 @@ $(document).ready(function() {
                     }
                 }
 
+                  // Step 3: Convert the object to an array of date-number pairs
+                  const dateNumberArray = Object.entries(dateNumberPairs);
+                  // Step 4: Sort the array by dates
+                  dateNumberArray.sort((a, b) => new Date(a[0]) - new Date(b[0]));        
+                  
+                  // Step 5: Find consecutive "1" values from the last date
+                  let consecutiveCount2 = 0;
+                  for (let i = dateNumberArray.length - 1; i >= 0; i--) {
+                    const [date, numbers] = dateNumberArray[i];
+                    
+                    // Check for consecutive "1" values in the 'numbers' array
+                    for (const number of numbers) {
+                      
+                      if (number === 1) {
+                        consecutiveCount2++;
+                      } else {
+                        break; // Stop counting when a non-"1" value is encountered
+                      }
+                    }
+                  }
+
+                  console.log(dateNumberArray);
+                  console.log(`Consecutive "1" values from the last date: ${consecutiveCount2}`);
+                  document.getElementById("streakText").textContent = consecutiveCount2;
 
      
 
@@ -342,30 +366,6 @@ $(document).ready(function() {
     
                
       }
-      // Step 3: Convert the object to an array of date-number pairs
-      const dateNumberArray = Object.entries(dateNumberPairs);
-      // Step 4: Sort the array by dates
-      dateNumberArray.sort((a, b) => new Date(a[0]) - new Date(b[0]));        
-      
-      // Step 5: Find consecutive "1" values from the last date
-      let consecutiveCount = 0;
-      for (let i = dateNumberArray.length - 1; i >= 0; i--) {
-        const [date, numbers] = dateNumberArray[i];
-        
-        // Check for consecutive "1" values in the 'numbers' array
-        for (const number of numbers) {
-          
-          if (number === 1) {
-            consecutiveCount++;
-          } else {
-            break; // Stop counting when a non-"1" value is encountered
-          }
-        }
-      }
-
-      console.log(dateNumberArray);
-      console.log(`Consecutive "1" values from the last date: ${consecutiveCount}`);
-      document.getElementById("streakText").textContent = consecutiveCount;
     
 
     }
