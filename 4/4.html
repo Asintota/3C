@@ -348,7 +348,8 @@ $(document).ready(function() {
                     }
                     return 0;
                   });       
-                  
+                  // Step 5: Remove elements that are not valid dates
+                  dateNumberArray = dateNumberArray.filter(([date]) => !isNaN(date));
                   // Step 5: Find consecutive "1" values from the last date
                   let consecutiveCount2 = 0;
                   for (let i = dateNumberArray.length - 1; i >= 0; i--) {
