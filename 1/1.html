@@ -284,7 +284,7 @@ $(document).ready(function() {
                   for (let j = 1; j<celdas.length; j++) { //starts at 1 because first column is a string
                     const date = header[j].trim(); 
                     const number = celdas[j].trim();
-                    console.log("cell value: ", celdas[j]);
+                    //console.log("cell value: ", celdas[j]);
 
                     // Add date-number pair to the object
                     if (date && number) {
@@ -303,14 +303,14 @@ $(document).ready(function() {
                       positivesCount++;
                       console.log("Count +1 positive:"+ positivesCount);
                       if (consecutiveCount === consecutiveOnes) {
-                          console.log(`Found ${consecutiveOnes} consecutive "1" values in column ${j}`);
+                          //console.log(`Found ${consecutiveOnes} consecutive "1" values in column ${j}`);
                           badges[i].style.filter = 'none'; // Remove grayscale
                           badges[i].style.opacity = '1'; // Set full opacity
                           badges[i].title = "Enhorabuena! Has conseguido una racha de 3 semanas consecutivas " + stringEnhorabuena[i];
                           break; // No need to check further in this column
                       }
                     } else {
-                    console.log(`Not Found  consecutive "1"`);
+                    //console.log(`Not Found  consecutive "1"`);
                     consecutiveCount = 0; // Reset the count if a non-"1" value is encountered
                   }
                 }
