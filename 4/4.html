@@ -247,6 +247,7 @@ $(document).ready(function() {
       var dateNumberPairs = {};
       var negativesCount=0;
       var positivesCount=0;
+      var coins =0;
       for (let i = 0; i < csvDocs.length; i++) {
         // console.log(i);
         // fetch(csvDocs[i])
@@ -287,7 +288,7 @@ $(document).ready(function() {
                     const date = header[j].trim(); 
                     const number = celdas[j].trim();
                     console.log("cell value: ", celdas[j]);
-
+                    
                     // Add date-number pair to the object
                     if (date && number) {
                       if (!dateNumberPairs[date]) {
@@ -300,15 +301,19 @@ $(document).ready(function() {
 
                     if (celdas[j] === '0' || celdas[j] === '0.0') {
                         negativesCount++;
+                        coins = coins - 50;
                         console.log("Count +1 negative:"+ negativesCount);
                     }
                     document.getElementById("negativesText").textContent = negativesCount;
+                    document.getElementById("coinsText").textContent = coins;
 
                     if (celdas[j] === '1' || celdas[j] === '1.0') {
                         positivesCount++;
+                        coins = coins + 50;
                         console.log("Count +1 positive:"+ positivesCount);
                     }
                     document.getElementById("positivesText").textContent = positivesCount;
+                    document.getElementById("coinsText").textContent = coins;
                   }
 
                   let consecutiveCount = 0;
