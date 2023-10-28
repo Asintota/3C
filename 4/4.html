@@ -11,7 +11,7 @@
 
 
   <script>
-  const estudiante = 4;
+  const estudiante = 1;
   const val1 = [];
   const val2 = [];
   const val3 = [];
@@ -113,7 +113,7 @@ $(document).ready(function() {
     
   });
     
-  function toggleBadges() {
+  function toggleBadges(streak,negativesCount,positivesCount) {
       console.log('im here');
   // Badges change opacity (activation)
       const mountain = document.getElementById('mountain');
@@ -244,7 +244,9 @@ $(document).ready(function() {
       const rowNumber = estudiante; //la primera fila son los encabezados
       const csvDocs = ["../csv/Astronauta.csv","../csv/Senador.csv","../csv/Mago.csv","../csv/Ninja.csv"];
       const consecutiveOnes = 3;
-      
+      var dateNumberPairs = {};
+      var negativesCount=0;
+      var positivesCount=0;
       for (let i = 0; i < csvDocs.length; i++) {
         // console.log(i);
         // fetch(csvDocs[i])
@@ -272,31 +274,88 @@ $(document).ready(function() {
         // });
         
         
+
         $.get(csvDocs[i], function(data) {
               const filas = data.split(/\r?\n/);
               const fila = filas[rowNumber];
+              const header = filas[0].split(',');
               const celdas = fila.split(',');
         //      console.log(celdas);
                   let consecutiveCount = 0;
+                  
                   for (let j = 1; j<celdas.length; j++) { //starts at 1 because first column is a string
-                    console.log("cell value: ", celdas[j]);
+                    const date = header[j].trim(); 
+                    const number = celdas[j].trim();
+                    //console.log("cell value: ", celdas[j]);
+
+                    // Add date-number pair to the object
+                    if (date && number) {
+                      if (!dateNumberPairs[date]) {
+                        dateNumberPairs[date] = [];
+                      }
+                      dateNumberPairs[date].push(Number(number)); // Convert to a number
+                    }
+
+                    if (celdas[j] === '0' || celdas[j] === '0.0') {
+                        negativesCount++;
+                        console.log("Count +1 negative:"+ negativesCount);
+                        document.getElementById("negativesText").textContent = negativesCount;
+      
+                    }
                     if (celdas[j] === '1' || celdas[j] === '1.0') {
                       consecutiveCount++;
+                      positivesCount++;
+                      console.log("Count +1 positive:"+ positivesCount);
+                      document.getElementById("positivesText").textContent = positivesCount;
                       if (consecutiveCount === consecutiveOnes) {
-                          console.log(`Found ${consecutiveOnes} consecutive "1" values in column ${j}`);
+                          //console.log(`Found ${consecutiveOnes} consecutive "1" values in column ${j}`);
                           badges[i].style.filter = 'none'; // Remove grayscale
                           badges[i].style.opacity = '1'; // Set full opacity
                           badges[i].title = "Enhorabuena! Has conseguido una racha de 3 semanas consecutivas " + stringEnhorabuena[i];
                           break; // No need to check further in this column
                       }
                     } else {
-                    console.log(`Not Found  consecutive "1"`);
+                    //console.log(`Not Found  consecutive "1"`);
                     consecutiveCount = 0; // Reset the count if a non-"1" value is encountered
                   }
                 }
+
+
+                // for the streak 
+                
+
+              
+
               });  
+              
+    
                
       }
+      // Step 3: Convert the object to an array of date-number pairs
+      const dateNumberArray = Object.entries(dateNumberPairs);
+      // Step 4: Sort the array by dates
+      dateNumberArray.sort((a, b) => new Date(a[0]) - new Date(b[0]));        
+      
+      // Step 5: Find consecutive "1" values from the last date
+      let consecutiveCount = 0;
+      for (let i = dateNumberArray.length - 1; i >= 0; i--) {
+        const [date, numbers] = dateNumberArray[i];
+        
+        // Check for consecutive "1" values in the 'numbers' array
+        for (const number of numbers) {
+          if (number === 1) {
+            consecutiveCount++;
+          } else {
+            break; // Stop counting when a non-"1" value is encountered
+          }
+        }
+      }
+
+      console.log(dateNumberArray);
+      console.log(`Consecutive "1" values from the last date: ${consecutiveCount}`);
+      document.getElementById("streakText").textContent = positivesCount;
+    
+
     }
 
 
@@ -310,33 +369,40 @@ $(document).ready(function() {
     } 
   
     // Function to toggle between images
-    function toggleImages() {
-        const astronaut1 = document.getElementById('astronaut1');
-        const astronaut2 = document.getElementById('astronaut2');
-        // const astronaut3 = document.getElementById('astronaut3');
-        // const astronaut4 = document.getElementById('astronaut4');
+    // function toggleImages() {
+    //     const astronaut1 = document.getElementById('astronaut1');
+    //     const astronaut2 = document.getElementById('astronaut2');
+    //     // const astronaut3 = document.getElementById('astronaut3');
+    //     // const astronaut4 = document.getElementById('astronaut4');
         
         
-        // const val = [val1[estudiante],val2[estudiante], val3[estudiante], val4[estudiante]];
-        // for (let i = 0; i < val.length; i++) {
+    //     // const val = [val1[estudiante],val2[estudiante], val3[estudiante], val4[estudiante]];
+    //     // for (let i = 0; i < val.length; i++) {
           
-        // }
+    //     // }
         
-        if (val1[1]<=25) {
-            // Display the first image and hide the second
-            astronaut1.style.display = 'block';
-            astronaut2.style.display = 'none';
-        } else  {
-            // Display the second image and hide the first
-            astronaut1.style.display = 'none';
-            astronaut2.style.display = 'block';
-            console.log('Display astronaut');
-        }
-    }
+    //     if (val1[1]<=25) {
+    //         // Display the first image and hide the second
+    //         astronaut1.style.display = 'block';
+    //         astronaut2.style.display = 'none';
+    //     } else  {
+    //         // Display the second image and hide the first
+    //         astronaut1.style.display = 'none';
+    //         astronaut2.style.display = 'block';
+    //         console.log('Display astronaut');
+    //     }
+    // }
     // Call the toggleImages function when the window loads
-    window.onload = toggleImages;
-    window.onload = toggleBadges;
+    //window.onload = toggleImages;
+    
+    
+    var streak = new Array(4).fill(0);
+    var negativesCount = 0;
+    var positivesCount = 0;
+    window.onload = toggleBadges();
   
+    
+
    
 });
   
@@ -360,6 +426,22 @@ $(document).ready(function() {
 
 </head>
 <body>
+  <div class="top-bar">
+    <div class="streak" title="Racha">
+      <img class="icon" id="streak" src="../icons/streak.svg" width="75">
+      <span class="iconText" id="streakText"></span>
+    </div>
+    <div class="positives" title="Positivos">
+      <img class="icon" id="positives" src="../icons/positives.svg" width="75">
+      <span class="iconText" id="positivesText"></span>
+    </div>
+    <div class="negatives" title="Negativos">
+      <img class="icon" id="negatives" src="../icons/negatives.svg" width="75">
+      <span class="iconText" id="negativesText"></span>
+    </div>    
+   
+  </div>
+
   <div class="container">
     <div class="row">
       <div class="card" data-porcentaje="30">
