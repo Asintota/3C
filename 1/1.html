@@ -299,14 +299,13 @@ $(document).ready(function() {
                     if (celdas[j] === '0' || celdas[j] === '0.0') {
                         negativesCount++;
                         console.log("Count +1 negative:"+ negativesCount);
-                        document.getElementById("negativesText").textContent = negativesCount;
-      
                     }
+                    document.getElementById("negativesText").textContent = negativesCount;
                     if (celdas[j] === '1' || celdas[j] === '1.0') {
                       consecutiveCount++;
                       positivesCount++;
                       console.log("Count +1 positive:"+ positivesCount);
-                      document.getElementById("positivesText").textContent = positivesCount;
+                      
                       if (consecutiveCount === consecutiveOnes) {
                           //console.log(`Found ${consecutiveOnes} consecutive "1" values in column ${j}`);
                           badges[i].style.filter = 'none'; // Remove grayscale
@@ -318,6 +317,7 @@ $(document).ready(function() {
                     //console.log(`Not Found  consecutive "1"`);
                     consecutiveCount = 0; // Reset the count if a non-"1" value is encountered
                   }
+                  document.getElementById("positivesText").textContent = positivesCount;
                 }
 
 
