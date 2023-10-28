@@ -244,7 +244,7 @@ $(document).ready(function() {
       const rowNumber = estudiante; //la primera fila son los encabezados
       const csvDocs = ["../csv/Astronauta.csv","../csv/Senador.csv","../csv/Mago.csv","../csv/Ninja.csv"];
       const consecutiveOnes = 3;
-
+      const dateNumberPairs = {};
       for (let i = 0; i < csvDocs.length; i++) {
         // console.log(i);
         // fetch(csvDocs[i])
@@ -271,16 +271,29 @@ $(document).ready(function() {
         //   console.error("Error fetching CSV file:", error);
         // });
         
-        
+        const dateNumberPairs = {}; 
+
         $.get(csvDocs[i], function(data) {
               const filas = data.split(/\r?\n/);
               const fila = filas[rowNumber];
+              const header = filas[0].split(',');
               const celdas = fila.split(',');
         //      console.log(celdas);
                   let consecutiveCount = 0;
                   
                   for (let j = 1; j<celdas.length; j++) { //starts at 1 because first column is a string
+                    const date = header[j].trim(); 
+                    const number = celdas[j].trim();
                     console.log("cell value: ", celdas[j]);
+
+                    // Add date-number pair to the object
+                    if (date && number) {
+                      if (!dateNumberPairs[date]) {
+                        dateNumberPairs[date] = [];
+                      }
+                      dateNumberPairs[date].push(Number(number)); // Convert to a number
+                    }
+
                     if (celdas[j] === '0' || celdas[j] === '0.0') {
                         negativesCount++;
                         console.log("Count +1 negative:"+ negativesCount);
@@ -303,30 +316,45 @@ $(document).ready(function() {
                 }
 
 
-                // for streak count
-                let lastIndex = celdas.length - 1;
-                while (lastIndex >= 0 && celdas[lastIndex].trim() === '') {
-                   lastIndex--;
-                }
-                if (lastIndex >= 0 && (celdas[lastIndex] === '1' || celdas[lastIndex] === '1.0')) {
-                      // The last value is '1', count consecutive '1's going backward
-                      let streakCount = 1;
-                      for (let j = lastIndex - 1; j >= 0; j--) {
-                          if (celdas[j] === '1' || celdas[j] === '1.0') {
-                              streakCount++;
-                      } else {
-                          // Encountered a non-'1' value, stop counting
-                          streak[i] = streakCount;
-                          break;
-                      }
-                      }
-                    }
+                // for the streak 
+                
+
               
 
               });  
-      
+              
+    
                
       }
+      // Step 3: Convert the object to an array of date-number pairs
+      const dateNumberArray = Object.entries(dateNumberPairs);
+      // Step 4: Sort the array by dates
+      dateNumberArray.sort((a, b) => new Date(a[0]) - new Date(b[0]));        
+      
+      // Step 5: Find consecutive "1" values from the last date
+      let consecutiveCount = 0;
+      for (let i = dateNumberArray.length - 1; i >= 0; i--) {
+        const [date, numbers] = dateNumberArray[i];
+        
+        // Check for consecutive "1" values in the 'numbers' array
+        for (const number of numbers) {
+          if (number === 1) {
+            consecutiveCount++;
+          } else {
+            break; // Stop counting when a non-"1" value is encountered
+          }
+        }
+      }
+
+      console.log(dateNumberArray);
+      console.log(`Consecutive "1" values from the last date: ${consecutiveCount}`);
+              
+      console.log("Minimum streak: " + minStreak);
+      console.log("negatives count: " + negativesCount);
+      console.log("positives count: " + positivesCount);
+      document.getElementById("streakText").textContent = minStreak;
+      document.getElementById("negativesText").textContent = negativesCount;
+      document.getElementById("positivesText").textContent = positivesCount;
     }
 
 
@@ -370,20 +398,9 @@ $(document).ready(function() {
     var streak = new Array(4).fill(0);
     var negativesCount = 0;
     var positivesCount = 0;
-    window.onload = toggleBadges(streak,negativesCount,positivesCount);
+    window.onload = toggleBadges();
   
-    var minStreak = streak[0];
-      for (var k = 1; i < streak.length; k++) {
-          if (streak[k] < minStreak) {
-          minStreak = streak[k]; 
-          }
-      }
-      console.log("Minimum streak: " + minStreak);
-      console.log("negatives count: " + negativesCount);
-      console.log("positives count: " + positivesCount);
-      document.getElementById("streakText").textContent = minStreak;
-      document.getElementById("negativesText").textContent = negativesCount;
-      document.getElementById("positivesText").textContent = positivesCount;
+    
 
    
 });
