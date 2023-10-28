@@ -353,7 +353,7 @@ $(document).ready(function() {
 
       console.log(dateNumberArray);
       console.log(`Consecutive "1" values from the last date: ${consecutiveCount}`);
-
+      document.getElementById("streakText").textContent = positivesCount;
     
 
     }
@@ -427,7 +427,7 @@ $(document).ready(function() {
 </head>
 <body>
   <div class="top-bar">
-    <div class="streak" title="Racha de positivos">
+    <div class="streak" title="Racha">
       <img class="icon" id="streak" src="../icons/streak.svg" width="75">
       <span class="iconText" id="streakText"></span>
     </div>
