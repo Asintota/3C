@@ -147,7 +147,7 @@ body {
 }
 
 .percent .number h2 {
-  color: #777;
+  color: white;
   font-weight: 500;
   font-size: 40px;
   transition: 0.5s;
@@ -160,7 +160,7 @@ body {
 
 .percent .number h2 span {
   font-size: 24px;
-  color: #777;
+  color: white;
   transition: 0.5s;
 }
 
