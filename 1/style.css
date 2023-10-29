@@ -1,4 +1,4 @@
-@import url(https://fonts.google.com/css?family=Roboto:300,300,500,600,700,800,900);
+/* @import url(https://fonts.google.com/css?family=Roboto:300,300,500,600,700,800,900); */
 @font-face {
   font-family: 'fortnite'; /* Provide a suitable name */
   src: url('../fonts/Fortnite.ttf') format('truetype'); /* Update the path to your font file */
@@ -8,7 +8,7 @@
 *{
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'fortnite', sans-serif;
 }
 
 body {
@@ -38,10 +38,10 @@ body {
 }
 .iconText {
   color: white; /* Text color */
-  font-weight: bold; /* Bold font */
+  /* font-weight: bold; */
   font-size: 48px;
   margin-right: 30px; /* Adjust the spacing between icons */
-  font-family: 'fortnite', Arial;
+  font-family: 'fortnite';
 }   
 
 .container {
