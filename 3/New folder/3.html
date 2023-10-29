@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tienda</title>
+  <style>
+    /* Set the background image to the SVG and make it cover the entire viewport */
+    html, body, * { 
+     margin: 0; 
+     padding: 0; 
+
+}
+  </style>
+</head>
+<body>
+  <object data="shopmenu.svg" type="image/svg+xml"></object>
+
+  <script>
+    const objectElement = document.querySelector('object[data="shopmenu.svg"]');
+
+    objectElement.addEventListener("load", function () {
+      // SVG is fully loaded, so we can now access its elements
+      const svgDocument = objectElement.contentDocument;
+      const clickableButton = svgDocument.getElementById("item1");
+      
+      clickableButton.addEventListener("click", () => {
+        // Define the action you want to perform when the button is clicked.
+        console.log("Item1 clicked");
+        alert("Button clicked!");
+      });
+    });
+  </script>
+</body>
+</html>
