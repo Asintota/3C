@@ -34,7 +34,7 @@ body {
 
 .icon {
             fill: white; /* Icon color */
-            width: 48px; /* Icon width */
+            width: 60px; /* Icon width */
             height: 48px; /* Icon height */
             margin-right: 10px; /* Adjust the spacing between icons */
 }
@@ -237,6 +237,7 @@ svg circle:nth-child(2) {
 }
 .tienda {
   cursor: pointer;
+
 }
 .compass {
   fill: #A9A9A9;
