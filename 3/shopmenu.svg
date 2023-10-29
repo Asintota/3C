@@ -1,0 +1,3 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <circle id="item1" cx="50" cy="50" r="30" fill="blue" style="cursor: pointer;" />
+  </svg>
