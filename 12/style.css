@@ -1,9 +1,16 @@
-@import url(https://fonts.google.com/css?family=Roboto:300,300,500,600,700,800,900);
+/* @import url(https://fonts.google.com/css?family=Roboto:300,300,500,600,700,800,900); */
+@font-face {
+  font-family: 'fortnite'; /* Provide a suitable name */
+  src: url('../fonts/Fortnite.ttf') format('truetype'); /* Update the path to your font file */
+  /* You can also specify additional font formats for better compatibility */
+}
 
 *{
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'fortnite', sans-serif;
+  color: white;
+  font-weight: 500;
 }
 
 body {
@@ -33,9 +40,10 @@ body {
 }
 .iconText {
   color: white; /* Text color */
-  font-weight: bold; /* Bold font */
+  /* font-weight: bold; */
   font-size: 48px;
   margin-right: 30px; /* Adjust the spacing between icons */
+  font-family: 'fortnite';
 }   
 
 .container {
@@ -139,8 +147,8 @@ body {
 }
 
 .percent .number h2 {
-  color: #777;
-  font-weight: 700;
+  color: white;
+  font-weight: 500;
   font-size: 40px;
   transition: 0.5s;
 }
@@ -152,7 +160,7 @@ body {
 
 .percent .number h2 span {
   font-size: 24px;
-  color: #777;
+  color: white;
   transition: 0.5s;
 }
 
@@ -162,9 +170,9 @@ body {
 
 .text {
   position: relative;
-  color: #777;
+  color: #fff;
   margin-top: 20px;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 18px;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -227,7 +235,9 @@ svg circle:nth-child(2) {
   margin: auto; 
 
 }
-
+.tienda {
+  cursor: pointer;
+}
 .compass {
   fill: #A9A9A9;
   width: 17%; /* set the width to 50% */
